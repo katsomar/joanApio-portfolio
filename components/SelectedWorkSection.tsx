@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { PROFILE_DATA, FeaturedProject } from '@/lib/data/profile';
+import { CinematicReveal } from './CinematicReveal';
+import { ImageReveal } from './ImageReveal';
 
 export const SelectedWorkSection: React.FC = () => {
   const homeProjects = PROFILE_DATA.projects.filter((p) => p.featuredOnHome);
@@ -16,16 +18,24 @@ export const SelectedWorkSection: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 pb-8 border-b border-ink-dark/10">
           <div>
-            <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block mb-3">
-              Curated Portfolio
-            </span>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-ink-dark">
-              Selected Work <span className="italic font-light text-ink-muted">&amp; Impact</span>
-            </h2>
+            <CinematicReveal variant="fade-up" delay={0.1}>
+              <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block mb-3">
+                Curated Portfolio
+              </span>
+            </CinematicReveal>
+
+            <CinematicReveal variant="lines" delay={0.2}>
+              <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-ink-dark">
+                Selected Work <span className="italic font-light text-ink-muted">&amp; Impact</span>
+              </h2>
+            </CinematicReveal>
           </div>
-          <p className="font-sans text-sm text-ink-secondary max-w-md mt-4 md:mt-0">
-            A curated selection of strategic communications, institutional rebrandings, and field-based storytelling.
-          </p>
+
+          <CinematicReveal variant="fade-up" delay={0.3}>
+            <p className="font-sans text-sm text-ink-secondary max-w-md mt-4 md:mt-0">
+              A curated selection of strategic communications, institutional rebrandings, and field-based storytelling.
+            </p>
+          </CinematicReveal>
         </div>
 
         {/* Editorial Rhythmic Projects Stack */}
@@ -36,7 +46,7 @@ export const SelectedWorkSection: React.FC = () => {
         </div>
 
         {/* Pathway to Deeper Portfolio */}
-        <div className="mt-28 text-center pt-16 border-t border-ink-dark/10">
+        <CinematicReveal variant="fade-up" delay={0.2} className="mt-28 text-center pt-16 border-t border-ink-dark/10">
           <p className="font-serif text-2xl md:text-3xl text-ink-dark mb-6">
             Interested in learning more about Joan&apos;s full body of work?
           </p>
@@ -47,7 +57,7 @@ export const SelectedWorkSection: React.FC = () => {
             <span>Explore All Projects &amp; Archives</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
-        </div>
+        </CinematicReveal>
 
       </div>
     </section>
@@ -62,17 +72,19 @@ const ProjectItem: React.FC<{ project: FeaturedProject; index: number }> = ({ pr
       <div className="group relative bg-warm-surface border border-ink-dark/10 overflow-hidden shadow-tactile">
         <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
           <div className="lg:col-span-7 relative min-h-[340px] md:min-h-[440px] overflow-hidden">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover transition-transform duration-1000 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-ink-dark/10 group-hover:bg-transparent transition-colors duration-500" />
+            <ImageReveal className="w-full h-full">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+              />
+            </ImageReveal>
+            <div className="absolute inset-0 bg-ink-dark/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
           </div>
 
           <div className="lg:col-span-5 p-8 md:p-12 flex flex-col justify-between">
-            <div>
+            <CinematicReveal variant="fade-up">
               <div className="flex items-center justify-between gap-4 mb-4">
                 <span className="font-sans text-xs uppercase tracking-wider text-kavibe-primary font-semibold">
                   {project.category}
@@ -103,7 +115,7 @@ const ProjectItem: React.FC<{ project: FeaturedProject; index: number }> = ({ pr
                   ))}
                 </ul>
               </div>
-            </div>
+            </CinematicReveal>
 
             <div className="flex items-center justify-between pt-4 border-t border-ink-dark/10">
               <span className="font-sans text-xs uppercase tracking-wider text-ink-muted">
@@ -128,7 +140,7 @@ const ProjectItem: React.FC<{ project: FeaturedProject; index: number }> = ({ pr
       
       {/* Image Column */}
       <div className={`lg:col-span-7 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-        <div className="relative aspect-[16/10] overflow-hidden bg-ink-dark/5 border border-ink-dark/10 shadow-tactile group">
+        <ImageReveal className="aspect-[16/10] bg-ink-dark/5 border border-ink-dark/10 shadow-tactile group">
           <Image
             src={project.image}
             alt={project.title}
@@ -138,48 +150,54 @@ const ProjectItem: React.FC<{ project: FeaturedProject; index: number }> = ({ pr
           <div className="absolute top-4 left-4 px-3 py-1 bg-warm-bg/90 backdrop-blur-sm border border-ink-dark/10 text-ink-dark font-sans text-xs tracking-wider uppercase">
             {project.organization}
           </div>
-        </div>
+        </ImageReveal>
       </div>
 
       {/* Content Column */}
       <div className={`lg:col-span-5 ${isEven ? 'lg:order-2' : 'lg:order-1'} space-y-6`}>
-        <div className="flex items-center gap-3">
-          <span className="font-serif text-sm italic text-kavibe-primary font-normal">
-            0{index + 1}.
-          </span>
-          <span className="font-sans text-xs uppercase tracking-widest text-kavibe-primary font-semibold">
-            {project.category}
-          </span>
-          <span className="text-ink-muted">•</span>
-          <span className="font-sans text-xs text-ink-muted">{project.year}</span>
-        </div>
+        <CinematicReveal variant="fade-up" delay={0.1}>
+          <div className="flex items-center gap-3">
+            <span className="font-serif text-sm italic text-kavibe-primary font-normal">
+              0{index + 1}.
+            </span>
+            <span className="font-sans text-xs uppercase tracking-widest text-kavibe-primary font-semibold">
+              {project.category}
+            </span>
+            <span className="text-ink-muted">•</span>
+            <span className="font-sans text-xs text-ink-muted">{project.year}</span>
+          </div>
+        </CinematicReveal>
 
-        <h3 className="font-serif text-3xl md:text-4xl text-ink-dark font-normal leading-tight">
-          {project.title}
-        </h3>
+        <CinematicReveal variant="lines" delay={0.2}>
+          <h3 className="font-serif text-3xl md:text-4xl text-ink-dark font-normal leading-tight">
+            {project.title}
+          </h3>
+        </CinematicReveal>
 
-        <p className="font-sans text-sm md:text-base text-ink-secondary leading-relaxed">
-          {project.summary}
-        </p>
-
-        <div className="pt-4 border-t border-ink-dark/10">
-          <span className="font-sans text-xs font-semibold uppercase tracking-wider text-ink-muted block mb-2">
-            Joan / KAVIBE® Role:
-          </span>
-          <p className="font-sans text-sm text-ink-dark font-medium">
-            {project.role}
+        <CinematicReveal variant="fade-up" delay={0.3}>
+          <p className="font-sans text-sm md:text-base text-ink-secondary leading-relaxed">
+            {project.summary}
           </p>
-        </div>
 
-        <div className="pt-2">
-          <Link
-            href="/explore#projects"
-            className="btn-editorial-link"
-          >
-            <span>Explore Case Study</span>
-            <ArrowRight className="w-4 h-4 ml-1" />
-          </Link>
-        </div>
+          <div className="pt-4 border-t border-ink-dark/10 mt-4">
+            <span className="font-sans text-xs font-semibold uppercase tracking-wider text-ink-muted block mb-2">
+              Joan / KAVIBE® Role:
+            </span>
+            <p className="font-sans text-sm text-ink-dark font-medium">
+              {project.role}
+            </p>
+          </div>
+
+          <div className="pt-4">
+            <Link
+              href="/explore#projects"
+              className="btn-editorial-link"
+            >
+              <span>Explore Case Study</span>
+              <ArrowRight className="w-4 h-4 ml-1" />
+            </Link>
+          </div>
+        </CinematicReveal>
       </div>
 
     </div>
