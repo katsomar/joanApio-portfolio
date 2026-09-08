@@ -1,17 +1,19 @@
 import { PROFILE_DATA } from './data/profile';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://joan-apio-portfolio.vercel.app';
+
 export function getPersonSchema() {
   const { name, primaryTitle, secondaryTitle, shortBio, contact, kavibeOverview, competencies } = PROFILE_DATA;
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    '@id': 'https://www.kavibe.com/#person',
+    '@id': `${SITE_URL}/#person`,
     name,
     jobTitle: primaryTitle,
     description: `${shortBio} ${secondaryTitle}.`,
-    url: 'https://www.kavibe.com',
-    image: 'https://www.kavibe.com/images/joan/hero.png',
+    url: SITE_URL,
+    image: `${SITE_URL}/images/joan/hero.png`,
     sameAs: [
       contact.linkedin,
       contact.website
@@ -23,7 +25,7 @@ export function getPersonSchema() {
       url: kavibeOverview.websiteUrl,
       description: kavibeOverview.description,
       foundingDate: kavibeOverview.foundedYear,
-      logo: 'https://www.kavibe.com/images/joan/hero.png',
+      logo: `${SITE_URL}/logo/kavibe.png`,
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Kampala',
@@ -39,7 +41,7 @@ export function getPersonSchema() {
   };
 }
 
-export function getProfilePageSchema(url: string = 'https://www.kavibe.com/about') {
+export function getProfilePageSchema(url: string = `${SITE_URL}/about`) {
   return {
     '@context': 'https://schema.org',
     '@type': 'ProfilePage',

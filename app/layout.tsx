@@ -17,8 +17,10 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://joan-apio-portfolio.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.kavibe.com"),
+  metadataBase: new URL(siteUrl),
   title: "Joan Apio — Strategic Communicator & Founder of KAVIBE®",
   description: "Official NFC digital identity & editorial profile for Joan Apio, a Ugandan Development Communications & Marketing Specialist, Creative Storyteller, and founder of KAVIBE®.",
   keywords: [
@@ -36,11 +38,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Joan Apio — Strategic Communicator & Founder of KAVIBE®",
     description: "Development Communications · Marketing · Branding · Storytelling",
-    url: "https://www.kavibe.com",
+    url: siteUrl,
     siteName: "Joan Apio Personal Portfolio",
     images: [
       {
-        url: "/images/joan/hero.png",
+        url: `${siteUrl}/images/joan/hero.png`,
         width: 1200,
         height: 630,
         alt: "Joan Apio — Strategic Communicator",

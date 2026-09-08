@@ -7,25 +7,27 @@ import { Footer } from '@/components/Footer';
 import { FloatingSaveContact } from '@/components/FloatingSaveContact';
 import { getProfilePageSchema } from '@/lib/schema';
 import { PROFILE_DATA } from '@/lib/data/profile';
-import { ArrowLeft, CheckCircle2, Award, Globe, Mail, Linkedin, MapPin, Sparkles, Building2 } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Globe, Mail, Linkedin, Building2 } from 'lucide-react';
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://joan-apio-portfolio.vercel.app';
 
 export const metadata: Metadata = {
   title: "About Joan Apio — Biography, Career & KAVIBE® Platform",
   description: "Comprehensive professional biography of Joan Apio: Development Communications & Marketing Specialist, Lead Brand Strategist, and Founder of KAVIBE®. Discover her 15+ years of impact across Africa.",
   alternates: {
-    canonical: "https://www.kavibe.com/about",
+    canonical: `${siteUrl}/about`,
   },
   openGraph: {
     title: "About Joan Apio — Strategic Communicator & Founder of KAVIBE®",
     description: "Development Communications · Marketing · Branding · Storytelling",
-    url: "https://www.kavibe.com/about",
-    images: [{ url: "/images/joan/hero.png", width: 1200, height: 630, alt: "Joan Apio Profile" }],
+    url: `${siteUrl}/about`,
+    images: [{ url: `${siteUrl}/images/joan/hero.png`, width: 1200, height: 630, alt: "Joan Apio Profile" }],
   },
 };
 
 export default function AboutPage() {
   const { name, primaryTitle, secondaryTitle, shortBio, extendedStory, kavibeOverview, projects, journey, competencies, contact, philosophy } = PROFILE_DATA;
-  const jsonLd = getProfilePageSchema('https://www.kavibe.com/about');
+  const jsonLd = getProfilePageSchema(`${siteUrl}/about`);
 
   return (
     <main className="min-h-screen bg-warm-bg text-ink-dark selection:bg-kavibe-primary selection:text-warm-bg">
