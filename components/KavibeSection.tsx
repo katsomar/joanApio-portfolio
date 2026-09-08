@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import { ExternalLink, Layers, CheckCircle2 } from 'lucide-react';
+import Image from 'next/image';
+import { ExternalLink, CheckCircle2 } from 'lucide-react';
 import { PROFILE_DATA } from '@/lib/data/profile';
 
 export const KavibeSection: React.FC = () => {
@@ -27,12 +27,22 @@ export const KavibeSection: React.FC = () => {
           
           {/* Main KAVIBE Brand Card */}
           <div className="lg:col-span-6 space-y-8">
-            <div className="inline-block p-3 bg-kavibe-primary text-warm-bg mb-2">
-              <Layers className="w-6 h-6" />
+            
+            {/* Official KAVIBE Logo */}
+            <div className="inline-block p-4 bg-warm-bg/10 border border-warm-bg/15 backdrop-blur-md rounded-sm">
+              <div className="relative w-36 h-12">
+                <Image
+                  src="/logo/kavibe.png"
+                  alt="KAVIBE® Logo"
+                  fill
+                  className="object-contain object-left brightness-0 invert"
+                  priority
+                />
+              </div>
             </div>
 
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-warm-bg font-normal">
-              KAVIBE<span className="text-kavibe-accent">®</span>
+            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-warm-bg font-normal flex items-center gap-2">
+              KAVIBE<span className="text-kavibe-accent text-3xl font-light">®</span>
             </h2>
 
             <p className="font-serif text-xl md:text-2xl text-warm-bg/90 italic font-light">
@@ -59,13 +69,23 @@ export const KavibeSection: React.FC = () => {
 
           {/* Core Pillars & Role Card */}
           <div className="lg:col-span-6 bg-warm-bg/5 border border-warm-bg/10 p-8 md:p-12 space-y-8 backdrop-blur-sm">
-            <div className="border-b border-warm-bg/10 pb-6">
-              <span className="font-sans text-xs uppercase tracking-widest text-kavibe-accent font-semibold block mb-2">
-                Joan Apio&apos;s Leadership
-              </span>
-              <h3 className="font-serif text-2xl text-warm-bg font-normal">
-                Founder &amp; Managing Consultant
-              </h3>
+            <div className="flex items-center justify-between border-b border-warm-bg/10 pb-6">
+              <div>
+                <span className="font-sans text-xs uppercase tracking-widest text-kavibe-accent font-semibold block mb-1">
+                  Joan Apio&apos;s Leadership
+                </span>
+                <h3 className="font-serif text-2xl text-warm-bg font-normal">
+                  Founder &amp; Managing Consultant
+                </h3>
+              </div>
+              <div className="relative w-16 h-8 opacity-80">
+                <Image
+                  src="/logo/kavibe.png"
+                  alt="KAVIBE Brand Mark"
+                  fill
+                  className="object-contain brightness-0 invert"
+                />
+              </div>
             </div>
 
             <div className="space-y-4">

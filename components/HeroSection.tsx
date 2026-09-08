@@ -23,15 +23,20 @@ export const HeroSection: React.FC = () => {
           
           {/* Text & Identity Column */}
           <div className="lg:col-span-7 flex flex-col items-start z-10">
-            {/* KAVIBE Tag & Category */}
-            <div className="inline-flex items-center gap-3 px-3.5 py-1.5 bg-warm-surface border border-ink-dark/10 rounded-full mb-6">
-              <span className="w-2 h-2 rounded-full bg-kavibe-primary animate-pulse" />
+            
+            {/* KAVIBE Tag & Logo Chip */}
+            <div className="inline-flex items-center gap-3 px-4 py-2 bg-warm-surface border border-ink-dark/10 rounded-full mb-6 shadow-tactile">
+              <div className="relative w-14 h-4">
+                <Image
+                  src="/logo/kavibe.png"
+                  alt="KAVIBE Logo"
+                  fill
+                  className="object-contain object-left"
+                />
+              </div>
+              <span className="text-ink-muted text-xs">•</span>
               <span className="font-sans text-xs font-semibold tracking-wider text-kavibe-primary uppercase">
                 {PROFILE_DATA.badge}
-              </span>
-              <span className="text-ink-muted text-xs">•</span>
-              <span className="font-sans text-xs text-ink-secondary tracking-wide">
-                Development Communications
               </span>
             </div>
 
@@ -43,7 +48,7 @@ export const HeroSection: React.FC = () => {
             {/* Sub-titles */}
             <div className="space-y-2 mb-8">
               <p className="font-sans text-lg sm:text-xl md:text-2xl font-medium text-ink-dark tracking-tight">
-                Strategic Communicator <span className="text-kavibe-accent">&</span> Creative Storyteller
+                Strategic Communicator <span className="text-kavibe-accent">&amp;</span> Creative Storyteller
               </p>
               <p className="font-sans text-sm md:text-base text-ink-secondary tracking-wide">
                 Development Communications · Marketing · Branding
@@ -89,7 +94,7 @@ export const HeroSection: React.FC = () => {
               </div>
               <div>
                 <span className="block font-serif text-2xl md:text-3xl text-ink-dark font-normal">KAVIBE®</span>
-                <span className="font-sans text-[11px] uppercase tracking-wider text-ink-muted">Founder & Lead</span>
+                <span className="font-sans text-[11px] uppercase tracking-wider text-ink-muted">Founder &amp; Lead</span>
               </div>
               <div>
                 <span className="block font-serif text-2xl md:text-3xl text-ink-dark font-normal">Africa</span>
@@ -134,12 +139,17 @@ export const HeroSection: React.FC = () => {
 
               {/* Floating NFC Identity Badge */}
               <div className="absolute -bottom-6 -left-6 hidden sm:flex items-center gap-3 bg-warm-bg border border-ink-dark/15 p-4 shadow-tactile max-w-xs">
-                <div className="w-10 h-10 rounded-full bg-kavibe-soft flex items-center justify-center text-kavibe-primary flex-shrink-0">
-                  <span className="font-serif font-bold text-sm">JA</span>
+                <div className="relative w-12 h-6 flex-shrink-0">
+                  <Image
+                    src="/logo/kavibe.png"
+                    alt="KAVIBE Logo"
+                    fill
+                    className="object-contain object-left"
+                  />
                 </div>
                 <div>
                   <p className="font-sans text-xs font-semibold text-ink-dark">NFC Digital Identity</p>
-                  <p className="font-sans text-[11px] text-ink-muted">Tap to connect & explore work</p>
+                  <p className="font-sans text-[11px] text-ink-muted">Tap to connect &amp; explore work</p>
                 </div>
               </div>
             </div>

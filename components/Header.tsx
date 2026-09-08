@@ -22,10 +22,11 @@ export const Header: React.FC = () => {
   }, []);
 
   const navItems = [
+    { label: 'About', href: '/about' },
     { label: 'Work', href: '#work' },
     { label: 'KAVIBE®', href: '#kavibe' },
     { label: 'Journey', href: '#journey' },
-    { label: 'Story', href: '/explore' },
+    { label: 'Explore', href: '/explore' },
     { label: 'Connect', href: '#connect' },
   ];
 

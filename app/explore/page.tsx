@@ -8,26 +8,46 @@ import { Footer } from '@/components/Footer';
 import { FloatingSaveContact } from '@/components/FloatingSaveContact';
 import { downloadVCard } from '@/lib/vcard';
 import { PROFILE_DATA } from '@/lib/data/profile';
-import { ArrowLeft, UserCheck, CheckCircle2, Award, BookOpen, ExternalLink, Sparkles } from 'lucide-react';
+import { getProfilePageSchema } from '@/lib/schema';
+import { ArrowLeft, UserCheck, CheckCircle2, Award, BookOpen, ExternalLink, Sparkles, BookMarked } from 'lucide-react';
 
 export default function ExplorePage() {
   const { name, extendedStory, kavibeOverview, projects, journey, competencies, contact } = PROFILE_DATA;
+  const jsonLd = getProfilePageSchema('https://www.kavibe.com/explore');
 
   return (
     <main className="min-h-screen bg-warm-bg text-ink-dark selection:bg-kavibe-primary selection:text-warm-bg">
+      {/* Schema.org ProfilePage JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <Header />
 
       {/* Hero Header Banner */}
       <section className="pt-32 pb-20 bg-warm-surface border-b border-ink-dark/10 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-ink-muted hover:text-kavibe-primary font-sans text-xs uppercase tracking-superwide mb-8 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to NFC Quick Profile</span>
-          </Link>
+          <div className="flex items-center gap-6 mb-8">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-ink-muted hover:text-kavibe-primary font-sans text-xs uppercase tracking-superwide transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>NFC Quick Profile</span>
+            </Link>
+
+            <span className="text-ink-muted text-xs">•</span>
+
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 text-kavibe-primary hover:text-kavibe-secondary font-sans text-xs uppercase tracking-superwide font-semibold transition-colors"
+            >
+              <BookMarked className="w-4 h-4" />
+              <span>Read Full Indexable Bio (/about)</span>
+            </Link>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-8 space-y-4">

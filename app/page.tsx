@@ -8,10 +8,18 @@ import { JourneySection } from '@/components/JourneySection';
 import { ContactSection } from '@/components/ContactSection';
 import { FloatingSaveContact } from '@/components/FloatingSaveContact';
 import { Footer } from '@/components/Footer';
+import { getPersonSchema } from '@/lib/schema';
 
 export default function Home() {
+  const jsonLd = getPersonSchema();
+
   return (
     <main className="min-h-screen bg-warm-bg text-ink-dark relative selection:bg-kavibe-primary selection:text-warm-bg">
+      {/* Schema.org Person JSON-LD for Google Search */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <HeroSection />
       <PositioningSection />
