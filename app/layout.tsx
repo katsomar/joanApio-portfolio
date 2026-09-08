@@ -1,0 +1,66 @@
+import type { Metadata } from "next";
+import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
+import "./globals.css";
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["italic", "normal"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.kavibe.com"),
+  title: "Joan Apio — Strategic Communicator & Founder of KAVIBE®",
+  description: "Official NFC digital identity & editorial profile for Joan Apio, a Ugandan Development Communications & Marketing Specialist, Creative Storyteller, and founder of KAVIBE®.",
+  keywords: [
+    "Joan Apio",
+    "KAVIBE",
+    "Development Communication",
+    "Strategic Communicator",
+    "Uganda Marketing Specialist",
+    "Creative Storytelling",
+    "RUFORUM",
+    "University of Juba Rebranding",
+    "African Higher Education Communication"
+  ],
+  authors: [{ name: "Joan Apio" }],
+  openGraph: {
+    title: "Joan Apio — Strategic Communicator & Founder of KAVIBE®",
+    description: "Development Communications · Marketing · Branding · Storytelling",
+    url: "https://www.kavibe.com",
+    siteName: "Joan Apio Personal Portfolio",
+    images: [
+      {
+        url: "/images/joan/hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Joan Apio — Strategic Communicator",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className={`${cormorant.variable} ${jakarta.variable}`}>
+      <body className="font-sans bg-warm-bg text-ink-dark antialiased selection:bg-kavibe-primary selection:text-warm-bg">
+        {children}
+      </body>
+    </html>
+  );
+}

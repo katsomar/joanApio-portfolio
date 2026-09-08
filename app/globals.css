@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-warm: #FAF8F5;
+    --ink-dark: #191615;
+    --kavibe-primary: #A1243A;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #FAF8F5;
+    color: #191615;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: #FAF8F5;
+    color: #191615;
+    overflow-x: hidden;
+    min-height: 100vh;
+    selection-background-color: #A1243A;
+    selection-color: #FAF8F5;
+  }
+
+  ::selection {
+    background-color: #A1243A;
+    color: #FAF8F5;
+  }
+}
+
+/* Custom editorial image reveal animations */
+.image-reveal {
+  clip-path: inset(0 0 0 0);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Tactile editorial button styles */
+.btn-editorial-primary {
+  @apply inline-flex items-center justify-center px-6 py-3.5 bg-kavibe-primary text-warm-bg font-sans font-medium text-sm tracking-wider uppercase transition-all duration-300 hover:bg-kavibe-secondary active:scale-[0.98] shadow-tactile rounded-none;
+}
+
+.btn-editorial-secondary {
+  @apply inline-flex items-center justify-center px-6 py-3.5 border border-ink-dark/20 text-ink-dark font-sans font-medium text-sm tracking-wider uppercase transition-all duration-300 hover:border-kavibe-primary hover:text-kavibe-primary active:scale-[0.98] rounded-none;
+}
+
+.btn-editorial-link {
+  @apply inline-flex items-center gap-2 text-ink-dark font-sans font-semibold text-xs tracking-superwide uppercase relative transition-colors duration-300 hover:text-kavibe-primary;
+}
+
+.btn-editorial-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-[1px] bg-kavibe-primary transition-all duration-300;
+}
+
+.btn-editorial-link:hover::after {
+  @apply w-full;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(25, 22, 21, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A1243A;
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
