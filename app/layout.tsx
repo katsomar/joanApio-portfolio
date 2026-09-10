@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: "Joan Apio Personal Portfolio",
     images: [
       {
-        url: `${siteUrl}/images/joan/9.jpeg`,
+        url: `${siteUrl}/images/joan/9.jpg`,
         width: 1200,
         height: 630,
         alt: "Joan Apio — Strategic Communicator",

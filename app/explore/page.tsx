@@ -110,7 +110,7 @@ export default function ExplorePage() {
                   <div className="absolute -inset-2 rounded-[58%_42%_65%_35%/48%_55%_45%_52%] bg-kavibe-primary/10 blur-sm pointer-events-none group-hover:scale-105 transition-transform duration-700" />
                   <ImageReveal className="w-full h-full rounded-[58%_42%_65%_35%/48%_55%_45%_52%] border-2 border-kavibe-primary/30 overflow-hidden shadow-elevated relative bg-ink-dark/5">
                     <Image
-                      src="/images/joan/hero.png"
+                      src="/images/joan/3.jpg"
                       alt={`Joan Apio - Portfolio`}
                       fill
                       priority

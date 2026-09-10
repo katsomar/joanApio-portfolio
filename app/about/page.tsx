@@ -62,7 +62,7 @@ export default function AboutPage() {
               <ImageReveal delay={0.2} className="shadow-elevated">
                 <div className="aspect-[3/4] relative overflow-hidden bg-ink-dark/5 border border-ink-dark/10 group">
                   <Image
-                    src="/images/joan/hero.png"
+                    src="/images/joan/9.jpg"
                     alt={`Joan Apio - ${primaryTitle}`}
                     fill
                     priority
@@ -158,7 +158,7 @@ export default function AboutPage() {
                 <CinematicReveal variant="fade-up" delay={0.25} className="float-left mr-6 mb-3 sm:mb-4">
                   <div className="w-44 sm:w-52 md:w-56 aspect-square relative shadow-tactile border border-ink-dark/10 group overflow-hidden bg-ink-dark/5">
                     <Image
-                      src="/images/joan/story.png"
+                      src="/images/joan/7.jpg"
                       alt="Joan Apio working on communication strategy"
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"

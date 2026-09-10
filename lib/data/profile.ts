@@ -139,7 +139,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "East & West Africa",
       summary: "Multi-country storytelling initiative capturing how agricultural higher education transforms rural youth entrepreneurship and community livelihoods.",
       role: "Communications Specialist & Documentary Producer",
-      image: "/images/projects/project_tagdev.png",
+      image: "/images/joan/2.jpg",
       impact: [
         "Produced 25+ multimedia impact feature stories",
         "Engaged regional donor stakeholders & policymakers",
@@ -157,7 +157,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "Kampala, Uganda",
       summary: "Tailored brand design, bespoke executive portraiture, and high-impact website copywriting for a premier legal and development advisory firm.",
       role: "Creative Director & Lead Copywriter",
-      image: "/images/projects/project_sena.png",
+      image: "/images/joan/1.jpg",
       impact: [
         "Executive brand identity & collateral suite",
         "On-location photography & profile direction",
@@ -175,7 +175,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "Regional Africa",
       summary: "Practical training modules empowering NGO officers, researchers, and university staff with digital communication, social strategy, and storytelling tools.",
       role: "Lead Trainer & Workshop Facilitator",
-      image: "/images/projects/project_digital_skilling.png",
+      image: "/images/joan/10.jpg",
       impact: [
         "Trained 300+ communication officers across Africa",
         "Hands-on modules in visual storytelling & social media",
@@ -193,7 +193,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "Kampala, Uganda",
       summary: "Pioneering the open-access institutional repository connecting 120+ African agricultural universities to globally accessible research findings.",
       role: "Information & Knowledge Management Specialist",
-      image: "/images/projects/project_ruforum.png",
+      image: "/images/joan/8.jpeg",
       impact: [
         "Built open repository indexed globally",
         "Cataloged thousands of research papers & policy briefs",
