@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Header } from '@/components/Header';
@@ -12,18 +12,44 @@ import { getProfilePageSchema } from '@/lib/schema';
 import { CinematicReveal } from '@/components/CinematicReveal';
 import { ImageReveal } from '@/components/ImageReveal';
 import { AnimatedIcon } from '@/components/AnimatedIcon';
-import { InteractiveTimelineRail } from '@/components/InteractiveTimelineRail';
-import { ArrowLeft, UserCheck, CheckCircle2, Award, BookOpen, ExternalLink, Sparkles, BookMarked, User, Briefcase, Milestone } from 'lucide-react';
+import {
+  Briefcase,
+  Sparkles,
+  ArrowUpRight,
+  CheckCircle2,
+  Award,
+  BookOpen,
+  ExternalLink,
+  UserCheck,
+  Filter,
+} from 'lucide-react';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://joan-apio-portfolio.vercel.app';
 
+const filterCategories = [
+  { id: 'all', label: 'All Projects' },
+  { id: 'branding', label: 'Branding & Strategy' },
+  { id: 'documentary', label: 'Visual Documentaries' },
+  { id: 'skilling', label: 'Capacity Building' },
+  { id: 'knowledge', label: 'Knowledge Repositories' },
+];
+
 export default function ExplorePage() {
-  const { name, extendedStory, kavibeOverview, projects, journey, competencies, contact } = PROFILE_DATA;
+  const { name, kavibeOverview, projects, contact } = PROFILE_DATA;
+  const [activeFilter, setActiveFilter] = useState('all');
   const jsonLd = getProfilePageSchema(`${siteUrl}/explore`);
+
+  const filteredProjects = projects.filter((project) => {
+    if (activeFilter === 'all') return true;
+    if (activeFilter === 'branding') return project.category.toLowerCase().includes('branding');
+    if (activeFilter === 'documentary') return project.category.toLowerCase().includes('documentar');
+    if (activeFilter === 'skilling') return project.category.toLowerCase().includes('capacity') || project.category.toLowerCase().includes('skilling');
+    if (activeFilter === 'knowledge') return project.category.toLowerCase().includes('knowledge') || project.category.toLowerCase().includes('librar');
+    return true;
+  });
 
   return (
     <main className="min-h-screen bg-warm-bg text-ink-dark selection:bg-kavibe-primary selection:text-warm-bg">
-      {/* Schema.org ProfilePage JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -34,31 +60,43 @@ export default function ExplorePage() {
       {/* Hero Header Banner */}
       <section className="pt-32 pb-20 bg-warm-surface border-b border-ink-dark/10 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            {/* Left Column: Headline & Subtitle */}
             <div className="lg:col-span-7 space-y-6">
-              <CinematicReveal variant="lines" delay={0.1}>
+              <CinematicReveal variant="fade-up" delay={0.1}>
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-warm-bg border border-ink-dark/10 rounded-full">
+                  <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+                    <Briefcase className="w-3.5 h-3.5 text-kavibe-primary" />
+                  </AnimatedIcon>
+                  <span className="font-sans text-xs font-semibold tracking-wider text-kavibe-primary uppercase">
+                    Interactive Portfolio &amp; Case Studies
+                  </span>
+                </div>
+              </CinematicReveal>
+
+              <CinematicReveal variant="lines" delay={0.25}>
                 <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl text-ink-dark font-normal leading-[0.95]">
-                  The Story &amp; Work of <span className="italic font-light text-kavibe-primary">{name}</span>
+                  Explore the Work of <span className="italic font-light text-kavibe-primary">{name}</span>
                 </h1>
               </CinematicReveal>
 
-              <CinematicReveal variant="words" delay={0.25}>
+              <CinematicReveal variant="words" delay={0.4}>
                 <p className="font-sans text-lg text-ink-secondary max-w-xl leading-relaxed">
-                  A deeper exploration into 15+ years of strategic communication, institutional identity, and development storytelling across Africa.
+                  Interactive case studies, institutional rebrandings, multimedia field documentaries, and digital capacity building across Africa.
                 </p>
               </CinematicReveal>
 
-              <CinematicReveal variant="fade-up" delay={0.4}>
-                <div className="pt-2">
-                  <button
-                    onClick={downloadVCard}
-                    className="btn-editorial-primary inline-flex items-center gap-2"
-                  >
+              <CinematicReveal variant="fade-up" delay={0.55}>
+                <div className="flex flex-wrap items-center gap-4 pt-2">
+                  <Link href="/about" className="btn-editorial-primary inline-flex items-center gap-2">
                     <AnimatedIcon hoverScale={1.2} hoverRotate={10}>
-                      <UserCheck className="w-4 h-4" />
+                      <Sparkles className="w-4 h-4" />
+                    </AnimatedIcon>
+                    <span>Read Full Biography (/about)</span>
+                  </Link>
+                  <button onClick={downloadVCard} className="btn-editorial-secondary inline-flex items-center gap-2">
+                    <AnimatedIcon hoverScale={1.2} hoverRotate={-10}>
+                      <UserCheck className="w-4 h-4 text-kavibe-primary" />
                     </AnimatedIcon>
                     <span>Save Contact (.vcf)</span>
                   </button>
@@ -66,18 +104,14 @@ export default function ExplorePage() {
               </CinematicReveal>
             </div>
 
-            {/* Right Column: Organic Rock-Shaped Joan Portrait */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
               <CinematicReveal variant="fade-up" delay={0.3}>
                 <div className="relative w-64 h-80 sm:w-72 sm:h-96 group">
-                  {/* Outer organic decorative aura ring */}
                   <div className="absolute -inset-2 rounded-[58%_42%_65%_35%/48%_55%_45%_52%] bg-kavibe-primary/10 blur-sm pointer-events-none group-hover:scale-105 transition-transform duration-700" />
-                  
-                  {/* Main Organic Rock-Shaped Image Mask Container */}
                   <ImageReveal className="w-full h-full rounded-[58%_42%_65%_35%/48%_55%_45%_52%] border-2 border-kavibe-primary/30 overflow-hidden shadow-elevated relative bg-ink-dark/5">
                     <Image
                       src="/images/joan/hero.png"
-                      alt={`Joan Apio - ${PROFILE_DATA.primaryTitle}`}
+                      alt={`Joan Apio - Portfolio`}
                       fill
                       priority
                       className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
@@ -88,179 +122,122 @@ export default function ExplorePage() {
             </div>
 
           </div>
-
         </div>
       </section>
 
-      {/* Section 1: Extended Story & Narrative */}
-      <section id="story" className="py-24 bg-warm-bg border-b border-ink-dark/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
-            {/* Story Portrait with ImageReveal */}
-            <div className="lg:col-span-5 relative">
-              <ImageReveal delay={0.2} className="shadow-elevated">
-                <div className="aspect-[4/5] relative overflow-hidden bg-ink-dark/5 border border-ink-dark/10 group">
-                  <Image
-                    src="/images/joan/story.png"
-                    alt="Joan Apio - Creative Director & Communicator"
-                    fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-dark/70 via-transparent to-transparent p-6 flex items-end">
-                    <span className="font-serif text-warm-bg text-lg italic">
-                      Joan Apio in Kampala, Uganda
-                    </span>
-                  </div>
-                </div>
-              </ImageReveal>
-            </div>
-
-            {/* Narrative Text */}
-            <div className="lg:col-span-7 space-y-6">
-              <CinematicReveal variant="fade-up" delay={0.1}>
-                <div className="inline-flex items-center gap-2">
-                  <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
-                    <User className="w-4 h-4 text-kavibe-primary" />
-                  </AnimatedIcon>
-                  <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
-                    Her Professional Journey
-                  </span>
-                </div>
-              </CinematicReveal>
-              
-              <CinematicReveal variant="lines" delay={0.25}>
-                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-ink-dark font-normal">
-                  Storytelling as a Catalyst for Sustainable Development
-                </h2>
-              </CinematicReveal>
-
-              <div className="space-y-4 font-sans text-base text-ink-secondary leading-relaxed">
-                {extendedStory.map((paragraph, idx) => (
-                  <CinematicReveal key={idx} variant="fade-up" delay={0.35 + idx * 0.15}>
-                    <p>{paragraph}</p>
-                  </CinematicReveal>
-                ))}
-              </div>
-
-              {/* Competencies Badges */}
-              <CinematicReveal variant="fade-up" delay={0.65}>
-                <div className="pt-6 border-t border-ink-dark/10 space-y-3">
-                  <span className="font-sans text-xs font-semibold uppercase tracking-wider text-ink-dark block">
-                    Core Specializations:
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {competencies.map((comp) => (
-                      <span
-                        key={comp}
-                        className="px-3.5 py-1.5 bg-warm-surface border border-ink-dark/10 text-ink-dark font-sans text-xs tracking-wide flex items-center gap-1.5"
-                      >
-                        <AnimatedIcon hoverScale={1.25} hoverRotate={10}>
-                          <Sparkles className="w-3 h-3 text-kavibe-primary" />
-                        </AnimatedIcon>
-                        <span>{comp}</span>
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </CinematicReveal>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Section 2: Complete Project Case Studies */}
-      <section id="projects" className="py-24 bg-warm-surface border-b border-ink-dark/10">
+      {/* Interactive Case Studies Section */}
+      <section id="projects" className="py-24 bg-warm-bg border-b border-ink-dark/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           
-          <div className="max-w-2xl mb-16 space-y-3">
-            <CinematicReveal variant="fade-up" delay={0.1}>
-              <div className="inline-flex items-center gap-2">
-                <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
-                  <Briefcase className="w-4 h-4 text-kavibe-primary" />
-                </AnimatedIcon>
-                <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
-                  Curated Case Studies
-                </span>
+          {/* Section Heading & Category Filter Tabs */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-ink-dark/10 gap-8">
+            <div>
+              <CinematicReveal variant="fade-up" delay={0.1}>
+                <div className="inline-flex items-center gap-2 mb-2">
+                  <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+                    <Filter className="w-4 h-4 text-kavibe-primary" />
+                  </AnimatedIcon>
+                  <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
+                    Filterable Archive
+                  </span>
+                </div>
+              </CinematicReveal>
+
+              <CinematicReveal variant="lines" delay={0.2}>
+                <h2 className="font-serif text-4xl sm:text-5xl text-ink-dark font-normal">
+                  Case Studies &amp; Consultancies
+                </h2>
+              </CinematicReveal>
+            </div>
+
+            {/* Filter Pills */}
+            <CinematicReveal variant="fade-up" delay={0.3}>
+              <div className="flex flex-wrap items-center gap-2">
+                {filterCategories.map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveFilter(cat.id)}
+                    className={`px-4 py-2 font-sans text-xs font-medium tracking-wide uppercase transition-all duration-300 rounded-full border ${
+                      activeFilter === cat.id
+                        ? 'bg-kavibe-primary text-warm-bg border-kavibe-primary shadow-tactile'
+                        : 'bg-warm-surface text-ink-secondary border-ink-dark/10 hover:border-kavibe-primary hover:text-kavibe-primary'
+                    }`}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
               </div>
-            </CinematicReveal>
-
-            <CinematicReveal variant="lines" delay={0.2}>
-              <h2 className="font-serif text-4xl md:text-5xl text-ink-dark font-normal">
-                Deep Case Studies &amp; Projects
-              </h2>
-            </CinematicReveal>
-
-            <CinematicReveal variant="words" delay={0.3}>
-              <p className="font-sans text-sm text-ink-secondary">
-                Evidence of impact through institutional rebrandings, multimedia field documentaries, and knowledge repositories.
-              </p>
             </CinematicReveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {projects.map((project, idx) => (
-              <CinematicReveal key={project.id} variant="fade-up" delay={0.2 + idx * 0.15}>
-                <div className="bg-warm-bg border border-ink-dark/10 p-8 shadow-tactile space-y-6 flex flex-col justify-between group h-full">
-                  <div>
-                    <ImageReveal className="aspect-[16/9] bg-ink-dark/5 border border-ink-dark/10 mb-6">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                    </ImageReveal>
-
-                    <div className="flex items-center justify-between text-xs font-sans text-ink-muted mb-2">
-                      <span className="uppercase tracking-wider text-kavibe-primary font-semibold">
-                        {project.category}
-                      </span>
-                      <span>{project.year}</span>
+          {/* Filtered Project Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {filteredProjects.map((project, idx) => (
+              <CinematicReveal key={project.id} variant="fade-up" delay={0.1 + idx * 0.1}>
+                <div className="group bg-warm-surface border border-ink-dark/10 shadow-tactile h-full flex flex-col justify-between overflow-hidden hover:shadow-elevated transition-all duration-500">
+                  
+                  {/* Image Header */}
+                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-ink-dark/5 border-b border-ink-dark/10">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute top-3 left-3 px-3 py-1 bg-warm-bg/90 backdrop-blur-md border border-ink-dark/10 text-ink-dark font-sans text-[11px] font-medium tracking-wider uppercase shadow-sm">
+                      {project.organization}
                     </div>
+                    <div className="absolute top-3 right-3 px-2.5 py-1 bg-kavibe-primary text-warm-bg font-sans text-[11px] font-semibold tracking-wide rounded-sm shadow-sm">
+                      {project.year}
+                    </div>
+                  </div>
 
-                    <h3 className="font-serif text-2xl text-ink-dark font-normal mb-3 group-hover:text-kavibe-primary transition-colors">
-                      {project.title}
-                    </h3>
+                  {/* Body Content */}
+                  <div className="p-8 flex-1 flex flex-col justify-between space-y-6">
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="font-sans text-xs uppercase tracking-wider text-kavibe-primary font-semibold">
+                          {project.category}
+                        </span>
+                      </div>
 
-                    <p className="font-sans text-sm text-ink-secondary leading-relaxed mb-6">
-                      {project.summary}
-                    </p>
+                      <h3 className="font-serif text-2xl sm:text-3xl text-ink-dark font-normal leading-snug group-hover:text-kavibe-primary transition-colors">
+                        {project.title}
+                      </h3>
 
-                    <div className="space-y-2 pt-4 border-t border-ink-dark/10">
-                      <span className="font-sans text-xs font-semibold uppercase tracking-wider text-ink-dark block">
-                        Role &amp; Deliverables:
-                      </span>
-                      <p className="font-sans text-xs text-ink-secondary">
-                        {project.role}
+                      <p className="font-sans text-sm text-ink-secondary leading-relaxed mt-3">
+                        {project.summary}
                       </p>
-                      {project.impact && (
-                        <ul className="space-y-1 pt-2">
-                          {project.impact.map((imp) => (
-                            <li key={imp} className="font-sans text-xs text-ink-muted flex items-start gap-2">
-                              <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
-                                <span className="text-kavibe-accent">•</span>
-                              </AnimatedIcon>
-                              <span>{imp}</span>
-                            </li>
-                          ))}
-                        </ul>
+
+                      {project.impact && project.impact.length > 0 && (
+                        <div className="mt-5 pt-4 border-t border-ink-dark/10 space-y-2">
+                          <span className="font-sans text-[11px] font-semibold uppercase tracking-wider text-ink-dark block">
+                            Key Outcomes &amp; Impact:
+                          </span>
+                          <ul className="space-y-1.5">
+                            {project.impact.map((item) => (
+                              <li key={item} className="font-sans text-xs text-ink-secondary flex items-start gap-2">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-kavibe-primary flex-shrink-0 mt-0.5" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       )}
                     </div>
+
+                    <div className="pt-4 border-t border-ink-dark/10 flex items-center justify-between">
+                      <span className="font-sans text-xs text-ink-muted">
+                        <strong className="text-ink-dark font-medium">Role:</strong> {project.role}
+                      </span>
+                      <span className="font-sans text-xs font-semibold text-kavibe-primary flex items-center gap-1">
+                        Featured Case Study
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="pt-6 border-t border-ink-dark/10 flex items-center justify-between">
-                    <span className="font-sans text-xs text-ink-muted">
-                      {project.organization}
-                    </span>
-                    <span className="font-sans text-xs uppercase tracking-wider text-kavibe-primary font-semibold flex items-center gap-1">
-                      Featured Project
-                      <AnimatedIcon hoverScale={1.3} hoverRotate={15}>
-                        <Sparkles className="w-3.5 h-3.5" />
-                      </AnimatedIcon>
-                    </span>
-                  </div>
                 </div>
               </CinematicReveal>
             ))}
@@ -269,35 +246,7 @@ export default function ExplorePage() {
         </div>
       </section>
 
-      {/* Section 3: Deep Journey Timeline */}
-      <section id="journey" className="py-24 bg-warm-bg border-b border-ink-dark/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          
-          <div className="max-w-2xl mb-16 space-y-3">
-            <CinematicReveal variant="fade-up" delay={0.1}>
-              <div className="inline-flex items-center gap-2">
-                <AnimatedIcon hoverScale={1.3} hoverRotate={15}>
-                  <Milestone className="w-4 h-4 text-kavibe-primary" />
-                </AnimatedIcon>
-                <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
-                  Professional Progression
-                </span>
-              </div>
-            </CinematicReveal>
-
-            <CinematicReveal variant="lines" delay={0.2}>
-              <h2 className="font-serif text-4xl md:text-5xl text-ink-dark font-normal">
-                Leadership &amp; Institutional Experience
-              </h2>
-            </CinematicReveal>
-          </div>
-
-          <InteractiveTimelineRail journey={journey} />
-
-        </div>
-      </section>
-
-      {/* Section 4: KAVIBE® Platform & Mentorship */}
+      {/* KAVIBE® Platform & Capacity Building Hub */}
       <section className="py-24 bg-ink-dark text-warm-bg">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -366,7 +315,7 @@ export default function ExplorePage() {
               <CinematicReveal variant="fade-up" delay={0.3}>
                 <div className="bg-warm-bg/5 border border-warm-bg/10 p-8 md:p-12 space-y-6">
                   <h3 className="font-serif text-2xl text-warm-bg font-normal">
-                    Direct Contact &amp; Consultities
+                    Direct Contact &amp; Consultancies
                   </h3>
                   <p className="font-sans text-sm text-warm-bg/70">
                     Reach Joan directly for institutional consultancies, speaking engagements, or strategic partnerships.
@@ -397,4 +346,3 @@ export default function ExplorePage() {
     </main>
   );
 }
-

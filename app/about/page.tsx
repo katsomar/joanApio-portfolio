@@ -11,9 +11,17 @@ import { CinematicReveal } from '@/components/CinematicReveal';
 import { ImageReveal } from '@/components/ImageReveal';
 import { AnimatedIcon } from '@/components/AnimatedIcon';
 import { InteractiveTimelineRail } from '@/components/InteractiveTimelineRail';
-import { CheckCircle2, Globe, Mail, Linkedin, Building2, Sparkles, User, Briefcase, Milestone } from 'lucide-react';
+import { CheckCircle2, Globe, Mail, Linkedin, Building2, Sparkles, User, Briefcase, Milestone, Palette, Video, Camera, GraduationCap, Library, ArrowUpRight } from 'lucide-react';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://joan-apio-portfolio.vercel.app';
+
+const categoryIconMap: Record<string, React.ReactNode> = {
+  'Branding · Institutional Strategy': <Palette className="w-3.5 h-3.5 text-kavibe-primary" />,
+  'Development Communication · Visual Documentaries': <Video className="w-3.5 h-3.5 text-kavibe-primary" />,
+  'Branding · Photography · Copywriting': <Camera className="w-3.5 h-3.5 text-kavibe-primary" />,
+  'Capacity Building · Workshop Facilitation': <GraduationCap className="w-3.5 h-3.5 text-kavibe-primary" />,
+  'Knowledge Management · Digital Libraries': <Library className="w-3.5 h-3.5 text-kavibe-primary" />,
+};
 
 export const metadata: Metadata = {
   title: "About Joan Apio — Biography, Career & KAVIBE® Platform",
@@ -146,7 +154,19 @@ export default function AboutPage() {
                 </h2>
               </CinematicReveal>
 
-              <div className="space-y-6 font-sans text-base text-ink-secondary leading-relaxed">
+              <div className="space-y-6 font-sans text-base text-ink-secondary leading-relaxed clear-both">
+                <CinematicReveal variant="fade-up" delay={0.25} className="float-left mr-6 mb-3 sm:mb-4">
+                  <div className="w-44 sm:w-52 md:w-56 aspect-square relative shadow-tactile border border-ink-dark/10 group overflow-hidden bg-ink-dark/5">
+                    <Image
+                      src="/images/joan/story.png"
+                      alt="Joan Apio working on communication strategy"
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 640px) 176px, 224px"
+                    />
+                  </div>
+                </CinematicReveal>
+
                 {extendedStory.map((para, idx) => (
                   <CinematicReveal key={idx} variant="fade-up" delay={0.3 + idx * 0.15}>
                     <p>{para}</p>
@@ -239,26 +259,77 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project, idx) => (
               <CinematicReveal key={project.id} variant="fade-up" delay={0.2 + idx * 0.1}>
-                <div className="p-8 bg-warm-bg border border-ink-dark/10 space-y-4 shadow-tactile h-full flex flex-col justify-between">
-                  <div>
-                    <div className="inline-flex items-center gap-2">
-                      <AnimatedIcon hoverScale={1.3} hoverRotate={10}>
-                        <Sparkles className="w-3.5 h-3.5 text-kavibe-primary" />
-                      </AnimatedIcon>
-                      <span className="font-sans text-xs uppercase tracking-wider text-kavibe-primary font-semibold">
-                        {project.category} · {project.year}
-                      </span>
+                <div className="group bg-warm-bg border border-ink-dark/10 shadow-tactile h-full flex flex-col justify-between overflow-hidden hover:shadow-elevated transition-all duration-500">
+                  
+                  {/* Visual Project Header Banner */}
+                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-ink-dark/5 border-b border-ink-dark/10">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute top-3 left-3 px-3 py-1 bg-warm-bg/90 backdrop-blur-md border border-ink-dark/10 text-ink-dark font-sans text-[11px] font-medium tracking-wider uppercase shadow-sm">
+                      {project.organization}
                     </div>
-                    <h3 className="font-serif text-2xl text-ink-dark font-normal mt-2">
-                      {project.title}
-                    </h3>
-                    <p className="font-sans text-sm text-ink-secondary leading-relaxed mt-3">
-                      {project.summary}
-                    </p>
+                    <div className="absolute top-3 right-3 px-2.5 py-1 bg-kavibe-primary text-warm-bg font-sans text-[11px] font-semibold tracking-wide rounded-sm shadow-sm">
+                      {project.year}
+                    </div>
                   </div>
-                  <div className="pt-4 border-t border-ink-dark/10 text-xs font-sans text-ink-muted">
-                    <strong>Role:</strong> {project.role} ({project.organization})
+
+                  {/* Card Content Area */}
+                  <div className="p-7 flex-1 flex flex-col justify-between space-y-5">
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <AnimatedIcon hoverScale={1.3} hoverRotate={10}>
+                          {categoryIconMap[project.category] || <Sparkles className="w-3.5 h-3.5 text-kavibe-primary" />}
+                        </AnimatedIcon>
+                        <span className="font-sans text-xs uppercase tracking-wider text-kavibe-primary font-semibold">
+                          {project.category}
+                        </span>
+                      </div>
+
+                      <h3 className="font-serif text-2xl text-ink-dark font-normal leading-snug group-hover:text-kavibe-primary transition-colors">
+                        {project.title}
+                      </h3>
+
+                      <p className="font-sans text-sm text-ink-secondary leading-relaxed mt-3">
+                        {project.summary}
+                      </p>
+
+                      {/* Visual Outcomes List */}
+                      {project.impact && project.impact.length > 0 && (
+                        <div className="mt-4 pt-4 border-t border-ink-dark/10 space-y-2">
+                          <span className="font-sans text-[11px] font-semibold uppercase tracking-wider text-ink-dark block">
+                            Key Outcomes:
+                          </span>
+                          <ul className="space-y-1.5">
+                            {project.impact.slice(0, 2).map((item) => (
+                              <li key={item} className="font-sans text-xs text-ink-secondary flex items-start gap-2">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-kavibe-primary flex-shrink-0 mt-0.5" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="pt-4 border-t border-ink-dark/10 flex items-center justify-between">
+                      <span className="font-sans text-xs text-ink-muted">
+                        <strong className="text-ink-dark font-medium">Role:</strong> {project.role}
+                      </span>
+                      <Link
+                        href="/explore#projects"
+                        className="btn-editorial-link inline-flex items-center text-xs font-semibold text-kavibe-primary group-hover:underline"
+                      >
+                        <span>Details</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </Link>
+                    </div>
                   </div>
+
                 </div>
               </CinematicReveal>
             ))}
