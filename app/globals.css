@@ -33,6 +33,23 @@
   }
 }
 
+/* Reusable faint circular graphic elements (non-glowing, restrained) */
+.circle-bg-primary {
+  @apply rounded-full bg-kavibe-primary/[0.04] border border-kavibe-primary/10 pointer-events-none absolute;
+}
+
+.circle-bg-accent {
+  @apply rounded-full bg-kavibe-accent/[0.05] border border-kavibe-accent/10 pointer-events-none absolute;
+}
+
+.circle-bg-dark {
+  @apply rounded-full bg-ink-dark/[0.03] border border-ink-dark/10 pointer-events-none absolute;
+}
+
+.circle-bg-light {
+  @apply rounded-full bg-warm-bg/[0.04] border border-warm-bg/10 pointer-events-none absolute;
+}
+
 /* Custom editorial image reveal animations */
 .image-reveal {
   clip-path: inset(0 0 0 0);
@@ -41,20 +58,20 @@
 
 /* Tactile editorial button styles */
 .btn-editorial-primary {
-  @apply inline-flex items-center justify-center px-6 py-3.5 bg-kavibe-primary text-warm-bg font-sans font-medium text-sm tracking-wider uppercase transition-all duration-300 hover:bg-kavibe-secondary active:scale-[0.98] shadow-tactile rounded-none;
+  @apply inline-flex items-center justify-center px-6 py-3.5 bg-kavibe-primary text-warm-bg font-sans font-medium text-sm tracking-wider uppercase transition-all duration-300 hover:bg-kavibe-secondary active:scale-[0.98] shadow-tactile rounded-none min-h-[44px];
 }
 
 .btn-editorial-secondary {
-  @apply inline-flex items-center justify-center px-6 py-3.5 border border-ink-dark/20 text-ink-dark font-sans font-medium text-sm tracking-wider uppercase transition-all duration-300 hover:border-kavibe-primary hover:text-kavibe-primary active:scale-[0.98] rounded-none;
+  @apply inline-flex items-center justify-center px-6 py-3.5 border border-ink-dark/20 text-ink-dark font-sans font-medium text-sm tracking-wider uppercase transition-all duration-300 hover:border-kavibe-primary hover:text-kavibe-primary active:scale-[0.98] rounded-none min-h-[44px];
 }
 
 .btn-editorial-link {
-  @apply inline-flex items-center gap-2 text-ink-dark font-sans font-semibold text-xs tracking-superwide uppercase relative transition-colors duration-300 hover:text-kavibe-primary;
+  @apply inline-flex items-center gap-2 text-ink-dark font-sans font-semibold text-xs tracking-superwide uppercase relative transition-colors duration-300 hover:text-kavibe-primary min-h-[44px];
 }
 
 .btn-editorial-link::after {
   content: '';
-  @apply absolute bottom-0 left-0 w-0 h-[1px] bg-kavibe-primary transition-all duration-300;
+  @apply absolute bottom-1 left-0 w-0 h-[1px] bg-kavibe-primary transition-all duration-300;
 }
 
 .btn-editorial-link:hover::after {

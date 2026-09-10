@@ -3,7 +3,9 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { User, Briefcase, Sparkles, Compass, Layers, Send } from 'lucide-react';
 import { PROFILE_DATA } from '@/lib/data/profile';
+import { AnimatedIcon } from './AnimatedIcon';
 
 export const Footer: React.FC = () => {
   return (
@@ -32,12 +34,42 @@ export const Footer: React.FC = () => {
           </div>
 
           <nav className="flex flex-wrap items-center gap-6 text-xs font-sans uppercase tracking-widest text-warm-bg/70">
-            <Link href="/about" className="hover:text-kavibe-soft transition-colors">About</Link>
-            <Link href="#work" className="hover:text-kavibe-soft transition-colors">Work</Link>
-            <Link href="#kavibe" className="hover:text-kavibe-soft transition-colors">KAVIBE®</Link>
-            <Link href="#journey" className="hover:text-kavibe-soft transition-colors">Journey</Link>
-            <Link href="/explore" className="hover:text-kavibe-soft transition-colors">Explore</Link>
-            <Link href="#connect" className="hover:text-kavibe-soft transition-colors">Connect</Link>
+            <Link href="/about" className="hover:text-kavibe-soft transition-colors flex items-center gap-1.5 group">
+              <AnimatedIcon hoverScale={1.25} hoverRotate={10}>
+                <User className="w-3.5 h-3.5 text-kavibe-accent group-hover:text-kavibe-soft" />
+              </AnimatedIcon>
+              <span>About</span>
+            </Link>
+            <Link href="#work" className="hover:text-kavibe-soft transition-colors flex items-center gap-1.5 group">
+              <AnimatedIcon hoverScale={1.25} hoverRotate={10}>
+                <Briefcase className="w-3.5 h-3.5 text-kavibe-accent group-hover:text-kavibe-soft" />
+              </AnimatedIcon>
+              <span>Work</span>
+            </Link>
+            <Link href="#kavibe" className="hover:text-kavibe-soft transition-colors flex items-center gap-1.5 group">
+              <AnimatedIcon hoverScale={1.25} hoverRotate={10}>
+                <Sparkles className="w-3.5 h-3.5 text-kavibe-accent group-hover:text-kavibe-soft" />
+              </AnimatedIcon>
+              <span>KAVIBE®</span>
+            </Link>
+            <Link href="#journey" className="hover:text-kavibe-soft transition-colors flex items-center gap-1.5 group">
+              <AnimatedIcon hoverScale={1.25} hoverRotate={10}>
+                <Compass className="w-3.5 h-3.5 text-kavibe-accent group-hover:text-kavibe-soft" />
+              </AnimatedIcon>
+              <span>Journey</span>
+            </Link>
+            <Link href="/explore" className="hover:text-kavibe-soft transition-colors flex items-center gap-1.5 group">
+              <AnimatedIcon hoverScale={1.25} hoverRotate={10}>
+                <Layers className="w-3.5 h-3.5 text-kavibe-accent group-hover:text-kavibe-soft" />
+              </AnimatedIcon>
+              <span>Explore</span>
+            </Link>
+            <Link href="#connect" className="hover:text-kavibe-soft transition-colors flex items-center gap-1.5 group">
+              <AnimatedIcon hoverScale={1.25} hoverRotate={10}>
+                <Send className="w-3.5 h-3.5 text-kavibe-accent group-hover:text-kavibe-soft" />
+              </AnimatedIcon>
+              <span>Connect</span>
+            </Link>
           </nav>
 
         </div>
@@ -50,3 +82,4 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+

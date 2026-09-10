@@ -2,8 +2,9 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ExternalLink, CheckCircle2 } from 'lucide-react';
+import { ExternalLink, CheckCircle2, Layers, Sparkles } from 'lucide-react';
 import { PROFILE_DATA } from '@/lib/data/profile';
+import { AnimatedIcon } from './AnimatedIcon';
 
 export const KavibeSection: React.FC = () => {
   const { kavibeOverview } = PROFILE_DATA;
@@ -17,6 +18,9 @@ export const KavibeSection: React.FC = () => {
         
         {/* Brand Relationship Breadcrumb */}
         <div className="flex items-center gap-3 mb-12">
+          <AnimatedIcon hoverScale={1.3} hoverRotate={15}>
+            <Layers className="w-4 h-4 text-kavibe-accent" />
+          </AnimatedIcon>
           <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-soft/80 font-semibold">
             Brand Platform Relationship
           </span>
@@ -62,7 +66,9 @@ export const KavibeSection: React.FC = () => {
                 className="inline-flex items-center gap-3 px-8 py-4 bg-kavibe-primary hover:bg-kavibe-secondary text-warm-bg font-sans font-medium text-xs tracking-superwide uppercase transition-all duration-300 active:scale-95 shadow-elevated"
               >
                 <span>Visit Official KAVIBE® Website</span>
-                <ExternalLink className="w-4 h-4" />
+                <AnimatedIcon hoverScale={1.3} hoverRotate={15}>
+                  <ExternalLink className="w-4 h-4" />
+                </AnimatedIcon>
               </a>
             </div>
           </div>
@@ -89,13 +95,20 @@ export const KavibeSection: React.FC = () => {
             </div>
 
             <div className="space-y-4">
-              <span className="font-sans text-xs uppercase tracking-wider text-warm-bg/60 block">
-                Platform Capabilities &amp; Specializations:
-              </span>
+              <div className="flex items-center gap-2">
+                <AnimatedIcon hoverScale={1.2} hoverRotate={10}>
+                  <Sparkles className="w-3.5 h-3.5 text-kavibe-accent" />
+                </AnimatedIcon>
+                <span className="font-sans text-xs uppercase tracking-wider text-warm-bg/60 block">
+                  Platform Capabilities &amp; Specializations:
+                </span>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {kavibeOverview.corePillars.map((pillar) => (
                   <div key={pillar} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-kavibe-primary flex-shrink-0 mt-0.5" />
+                    <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+                      <CheckCircle2 className="w-4 h-4 text-kavibe-primary flex-shrink-0 mt-0.5" />
+                    </AnimatedIcon>
                     <span className="font-sans text-xs text-warm-bg/80 leading-snug">
                       {pillar}
                     </span>
@@ -120,3 +133,4 @@ export const KavibeSection: React.FC = () => {
     </section>
   );
 };
+

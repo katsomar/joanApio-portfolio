@@ -11,7 +11,9 @@ import { PROFILE_DATA } from '@/lib/data/profile';
 import { getProfilePageSchema } from '@/lib/schema';
 import { CinematicReveal } from '@/components/CinematicReveal';
 import { ImageReveal } from '@/components/ImageReveal';
-import { ArrowLeft, UserCheck, CheckCircle2, Award, BookOpen, ExternalLink, Sparkles, BookMarked } from 'lucide-react';
+import { AnimatedIcon } from '@/components/AnimatedIcon';
+import { InteractiveTimelineRail } from '@/components/InteractiveTimelineRail';
+import { ArrowLeft, UserCheck, CheckCircle2, Award, BookOpen, ExternalLink, Sparkles, BookMarked, User, Briefcase, Milestone } from 'lucide-react';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://joan-apio-portfolio.vercel.app';
 
@@ -39,7 +41,9 @@ export default function ExplorePage() {
                 href="/"
                 className="inline-flex items-center gap-2 text-ink-muted hover:text-kavibe-primary font-sans text-xs uppercase tracking-superwide transition-colors"
               >
-                <ArrowLeft className="w-4 h-4" />
+                <AnimatedIcon hoverScale={1.3} hoverRotate={-15}>
+                  <ArrowLeft className="w-4 h-4 text-kavibe-primary" />
+                </AnimatedIcon>
                 <span>NFC Quick Profile</span>
               </Link>
 
@@ -49,7 +53,9 @@ export default function ExplorePage() {
                 href="/about"
                 className="inline-flex items-center gap-2 text-kavibe-primary hover:text-kavibe-secondary font-sans text-xs uppercase tracking-superwide font-semibold transition-colors"
               >
-                <BookMarked className="w-4 h-4" />
+                <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+                  <BookMarked className="w-4 h-4" />
+                </AnimatedIcon>
                 <span>Read Full Indexable Bio (/about)</span>
               </Link>
             </div>
@@ -58,9 +64,14 @@ export default function ExplorePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-8 space-y-4">
               <CinematicReveal variant="fade-up" delay={0.2}>
-                <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
-                  Level 2 — Deeper Profile &amp; Narrative
-                </span>
+                <div className="inline-flex items-center gap-2">
+                  <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+                    <Sparkles className="w-4 h-4 text-kavibe-primary" />
+                  </AnimatedIcon>
+                  <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
+                    Level 2 — Deeper Profile &amp; Narrative
+                  </span>
+                </div>
               </CinematicReveal>
 
               <CinematicReveal variant="lines" delay={0.3}>
@@ -82,7 +93,9 @@ export default function ExplorePage() {
                   onClick={downloadVCard}
                   className="btn-editorial-primary inline-flex items-center gap-2"
                 >
-                  <UserCheck className="w-4 h-4" />
+                  <AnimatedIcon hoverScale={1.2} hoverRotate={10}>
+                    <UserCheck className="w-4 h-4" />
+                  </AnimatedIcon>
                   <span>Save Contact (.vcf)</span>
                 </button>
               </CinematicReveal>
@@ -119,9 +132,14 @@ export default function ExplorePage() {
             {/* Narrative Text */}
             <div className="lg:col-span-7 space-y-6">
               <CinematicReveal variant="fade-up" delay={0.1}>
-                <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
-                  Her Professional Journey
-                </span>
+                <div className="inline-flex items-center gap-2">
+                  <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+                    <User className="w-4 h-4 text-kavibe-primary" />
+                  </AnimatedIcon>
+                  <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
+                    Her Professional Journey
+                  </span>
+                </div>
               </CinematicReveal>
               
               <CinematicReveal variant="lines" delay={0.25}>
@@ -148,9 +166,12 @@ export default function ExplorePage() {
                     {competencies.map((comp) => (
                       <span
                         key={comp}
-                        className="px-3.5 py-1.5 bg-warm-surface border border-ink-dark/10 text-ink-dark font-sans text-xs tracking-wide"
+                        className="px-3.5 py-1.5 bg-warm-surface border border-ink-dark/10 text-ink-dark font-sans text-xs tracking-wide flex items-center gap-1.5"
                       >
-                        {comp}
+                        <AnimatedIcon hoverScale={1.25} hoverRotate={10}>
+                          <Sparkles className="w-3 h-3 text-kavibe-primary" />
+                        </AnimatedIcon>
+                        <span>{comp}</span>
                       </span>
                     ))}
                   </div>
@@ -168,9 +189,14 @@ export default function ExplorePage() {
           
           <div className="max-w-2xl mb-16 space-y-3">
             <CinematicReveal variant="fade-up" delay={0.1}>
-              <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
-                Curated Case Studies
-              </span>
+              <div className="inline-flex items-center gap-2">
+                <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+                  <Briefcase className="w-4 h-4 text-kavibe-primary" />
+                </AnimatedIcon>
+                <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
+                  Curated Case Studies
+                </span>
+              </div>
             </CinematicReveal>
 
             <CinematicReveal variant="lines" delay={0.2}>
@@ -226,7 +252,9 @@ export default function ExplorePage() {
                         <ul className="space-y-1 pt-2">
                           {project.impact.map((imp) => (
                             <li key={imp} className="font-sans text-xs text-ink-muted flex items-start gap-2">
-                              <span className="text-kavibe-accent">•</span>
+                              <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+                                <span className="text-kavibe-accent">•</span>
+                              </AnimatedIcon>
                               <span>{imp}</span>
                             </li>
                           ))}
@@ -241,7 +269,9 @@ export default function ExplorePage() {
                     </span>
                     <span className="font-sans text-xs uppercase tracking-wider text-kavibe-primary font-semibold flex items-center gap-1">
                       Featured Project
-                      <Sparkles className="w-3.5 h-3.5" />
+                      <AnimatedIcon hoverScale={1.3} hoverRotate={15}>
+                        <Sparkles className="w-3.5 h-3.5" />
+                      </AnimatedIcon>
                     </span>
                   </div>
                 </div>
@@ -258,9 +288,14 @@ export default function ExplorePage() {
           
           <div className="max-w-2xl mb-16 space-y-3">
             <CinematicReveal variant="fade-up" delay={0.1}>
-              <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
-                Professional Progression
-              </span>
+              <div className="inline-flex items-center gap-2">
+                <AnimatedIcon hoverScale={1.3} hoverRotate={15}>
+                  <Milestone className="w-4 h-4 text-kavibe-primary" />
+                </AnimatedIcon>
+                <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
+                  Professional Progression
+                </span>
+              </div>
             </CinematicReveal>
 
             <CinematicReveal variant="lines" delay={0.2}>
@@ -270,40 +305,7 @@ export default function ExplorePage() {
             </CinematicReveal>
           </div>
 
-          <div className="space-y-12 max-w-4xl">
-            {journey.map((item, idx) => (
-              <CinematicReveal key={item.organization} variant="fade-up" delay={0.2 + idx * 0.15}>
-                <div className="p-8 bg-warm-surface border border-ink-dark/10 shadow-tactile space-y-4">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-ink-dark/10">
-                    <div>
-                      <h3 className="font-serif text-2xl text-ink-dark font-normal">
-                        {item.role}
-                      </h3>
-                      <span className="font-sans text-xs uppercase tracking-widest text-kavibe-primary font-semibold">
-                        {item.organization}
-                      </span>
-                    </div>
-                    <span className="font-serif text-xl italic text-ink-muted">
-                      {item.period}
-                    </span>
-                  </div>
-
-                  <p className="font-sans text-sm text-ink-dark font-medium">
-                    {item.highlight}
-                  </p>
-
-                  <ul className="space-y-2 pt-2">
-                    {item.details.map((detail) => (
-                      <li key={detail} className="font-sans text-xs text-ink-secondary flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-kavibe-primary flex-shrink-0 mt-0.5" />
-                        <span>{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </CinematicReveal>
-            ))}
-          </div>
+          <InteractiveTimelineRail journey={journey} />
 
         </div>
       </section>
@@ -344,11 +346,15 @@ export default function ExplorePage() {
 
                 <div className="space-y-3 pt-4">
                   <div className="flex items-center gap-3 text-warm-bg/80 font-sans text-sm">
-                    <Award className="w-5 h-5 text-kavibe-accent" />
+                    <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+                      <Award className="w-5 h-5 text-kavibe-accent" />
+                    </AnimatedIcon>
                     <span>300+ Development Officers Trained in Digital Skilling</span>
                   </div>
                   <div className="flex items-center gap-3 text-warm-bg/80 font-sans text-sm">
-                    <BookOpen className="w-5 h-5 text-kavibe-accent" />
+                    <AnimatedIcon hoverScale={1.3} hoverRotate={-12}>
+                      <BookOpen className="w-5 h-5 text-kavibe-accent" />
+                    </AnimatedIcon>
                     <span>Mid-Career Communications Mentorship Network</span>
                   </div>
                 </div>
@@ -361,7 +367,9 @@ export default function ExplorePage() {
                     className="btn-editorial-primary inline-flex items-center gap-2"
                   >
                     <span>Explore KAVIBE.com</span>
-                    <ExternalLink className="w-4 h-4" />
+                    <AnimatedIcon hoverScale={1.3} hoverRotate={15}>
+                      <ExternalLink className="w-4 h-4" />
+                    </AnimatedIcon>
                   </a>
                 </div>
               </CinematicReveal>
@@ -402,3 +410,4 @@ export default function ExplorePage() {
     </main>
   );
 }
+

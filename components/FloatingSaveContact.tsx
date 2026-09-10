@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { downloadVCard } from '@/lib/vcard';
 import { UserPlus, Check } from 'lucide-react';
+import { AnimatedIcon } from './AnimatedIcon';
 
 export const FloatingSaveContact: React.FC = () => {
   const [saved, setSaved] = useState(false);
@@ -42,14 +43,18 @@ export const FloatingSaveContact: React.FC = () => {
       >
         {saved ? (
           <>
-            <Check className="w-4 h-4 text-warm-bg" />
+            <AnimatedIcon hoverScale={1.3} hoverRotate={-10}>
+              <Check className="w-4 h-4 text-warm-bg" />
+            </AnimatedIcon>
             <span className="font-sans text-xs uppercase tracking-wider font-semibold">
               Contact Saved (.vcf)
             </span>
           </>
         ) : (
           <>
-            <UserPlus className="w-4 h-4 text-warm-bg transition-transform group-hover:scale-110" />
+            <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+              <UserPlus className="w-4 h-4 text-warm-bg" />
+            </AnimatedIcon>
             <span className="font-sans text-xs uppercase tracking-wider font-semibold">
               Save Contact
             </span>

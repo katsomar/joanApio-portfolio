@@ -9,7 +9,9 @@ import { getProfilePageSchema } from '@/lib/schema';
 import { PROFILE_DATA } from '@/lib/data/profile';
 import { CinematicReveal } from '@/components/CinematicReveal';
 import { ImageReveal } from '@/components/ImageReveal';
-import { ArrowLeft, CheckCircle2, Globe, Mail, Linkedin, Building2 } from 'lucide-react';
+import { AnimatedIcon } from '@/components/AnimatedIcon';
+import { InteractiveTimelineRail } from '@/components/InteractiveTimelineRail';
+import { ArrowLeft, CheckCircle2, Globe, Mail, Linkedin, Building2, Sparkles, User, Briefcase, Milestone } from 'lucide-react';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://joan-apio-portfolio.vercel.app';
 
@@ -47,18 +49,42 @@ export default function AboutPage() {
           
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-ink-muted hover:text-kavibe-primary font-sans text-xs uppercase tracking-superwide mb-8 transition-colors"
+            className="inline-flex items-center gap-2 text-ink-muted hover:text-kavibe-primary font-sans text-xs uppercase tracking-superwide mb-8 transition-colors group"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <AnimatedIcon hoverScale={1.3} hoverRotate={-15}>
+              <ArrowLeft className="w-4 h-4 text-kavibe-primary" />
+            </AnimatedIcon>
             <span>Return to NFC Quick Card</span>
           </Link>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12 items-center">
             
-            <div className="lg:col-span-7 space-y-6">
+            {/* Portrait Column — FIRST ON MOBILE (order-1 lg:order-2) */}
+            <div className="w-full lg:col-span-5 relative order-1 lg:order-2 mb-6 lg:mb-0">
+              <ImageReveal delay={0.2} className="shadow-elevated">
+                <div className="aspect-[3/4] relative overflow-hidden bg-ink-dark/5 border border-ink-dark/10 group">
+                  <Image
+                    src="/images/joan/hero.png"
+                    alt={`Joan Apio - ${primaryTitle}`}
+                    fill
+                    priority
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-ink-dark/80 to-transparent text-warm-bg">
+                    <p className="font-serif text-lg font-light">{name}</p>
+                    <p className="font-sans text-xs text-warm-bg/70 uppercase tracking-widest">{contact.location}</p>
+                  </div>
+                </div>
+              </ImageReveal>
+            </div>
+
+            {/* Text Column — SECOND ON MOBILE (order-2 lg:order-1) */}
+            <div className="w-full lg:col-span-7 space-y-6 order-2 lg:order-1">
               <CinematicReveal variant="fade-up" delay={0.1}>
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-warm-bg border border-ink-dark/10 rounded-full">
-                  <span className="w-2 h-2 rounded-full bg-kavibe-primary" />
+                  <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+                    <Sparkles className="w-3.5 h-3.5 text-kavibe-primary" />
+                  </AnimatedIcon>
                   <span className="font-sans text-xs font-semibold tracking-wider text-kavibe-primary uppercase">
                     Official Authoritative Biography
                   </span>
@@ -92,7 +118,9 @@ export default function AboutPage() {
                     href={`mailto:${contact.email}`}
                     className="btn-editorial-primary inline-flex items-center gap-2"
                   >
-                    <Mail className="w-4 h-4" />
+                    <AnimatedIcon hoverScale={1.2} hoverRotate={10}>
+                      <Mail className="w-4 h-4" />
+                    </AnimatedIcon>
                     <span>Contact Joan</span>
                   </a>
                   <a
@@ -101,29 +129,13 @@ export default function AboutPage() {
                     rel="noopener noreferrer"
                     className="btn-editorial-secondary inline-flex items-center gap-2"
                   >
-                    <Linkedin className="w-4 h-4 text-kavibe-primary" />
+                    <AnimatedIcon hoverScale={1.2} hoverRotate={-10}>
+                      <Linkedin className="w-4 h-4 text-kavibe-primary" />
+                    </AnimatedIcon>
                     <span>LinkedIn Profile</span>
                   </a>
                 </div>
               </CinematicReveal>
-            </div>
-
-            <div className="lg:col-span-5 relative">
-              <ImageReveal delay={0.3} className="shadow-elevated">
-                <div className="aspect-[3/4] relative overflow-hidden bg-ink-dark/5 border border-ink-dark/10 group">
-                  <Image
-                    src="/images/joan/hero.png"
-                    alt={`Joan Apio - ${primaryTitle}`}
-                    fill
-                    priority
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-ink-dark/80 to-transparent text-warm-bg">
-                    <p className="font-serif text-lg font-light">{name}</p>
-                    <p className="font-sans text-xs text-warm-bg/70 uppercase tracking-widest">{contact.location}</p>
-                  </div>
-                </div>
-              </ImageReveal>
             </div>
 
           </div>
@@ -139,9 +151,14 @@ export default function AboutPage() {
             
             <div className="lg:col-span-8 space-y-8">
               <CinematicReveal variant="fade-up" delay={0.1}>
-                <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
-                  Professional Background &amp; Philosophy
-                </span>
+                <div className="inline-flex items-center gap-2">
+                  <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+                    <User className="w-4 h-4 text-kavibe-primary" />
+                  </AnimatedIcon>
+                  <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
+                    Professional Background &amp; Philosophy
+                  </span>
+                </div>
               </CinematicReveal>
 
               <CinematicReveal variant="lines" delay={0.2}>
@@ -179,7 +196,9 @@ export default function AboutPage() {
                   <ul className="space-y-3">
                     {competencies.map((comp) => (
                       <li key={comp} className="flex items-center gap-3 font-sans text-sm text-ink-dark">
-                        <CheckCircle2 className="w-4 h-4 text-kavibe-primary flex-shrink-0" />
+                        <AnimatedIcon hoverScale={1.3} hoverRotate={10}>
+                          <CheckCircle2 className="w-4 h-4 text-kavibe-primary flex-shrink-0" />
+                        </AnimatedIcon>
                         <span>{comp}</span>
                       </li>
                     ))}
@@ -189,7 +208,9 @@ export default function AboutPage() {
 
               <CinematicReveal variant="fade-up" delay={0.45}>
                 <div className="bg-ink-dark text-warm-bg p-8 space-y-4 shadow-elevated">
-                  <Building2 className="w-6 h-6 text-kavibe-accent" />
+                  <AnimatedIcon hoverScale={1.2} hoverRotate={8}>
+                    <Building2 className="w-6 h-6 text-kavibe-accent" />
+                  </AnimatedIcon>
                   <h3 className="font-serif text-2xl font-normal">KAVIBE® Platform</h3>
                   <p className="font-sans text-xs text-warm-bg/70 leading-relaxed">
                     {kavibeOverview.description}
@@ -201,7 +222,9 @@ export default function AboutPage() {
                     className="btn-editorial-link text-warm-bg hover:text-kavibe-accent inline-flex items-center gap-2 pt-2"
                   >
                     <span>Visit KAVIBE.com</span>
-                    <Globe className="w-3.5 h-3.5" />
+                    <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+                      <Globe className="w-3.5 h-3.5" />
+                    </AnimatedIcon>
                   </a>
                 </div>
               </CinematicReveal>
@@ -218,9 +241,14 @@ export default function AboutPage() {
           
           <div className="max-w-2xl mb-16 space-y-2">
             <CinematicReveal variant="fade-up" delay={0.1}>
-              <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
-                Crawlable Work Portfolio
-              </span>
+              <div className="inline-flex items-center gap-2">
+                <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+                  <Briefcase className="w-4 h-4 text-kavibe-primary" />
+                </AnimatedIcon>
+                <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
+                  Crawlable Work Portfolio
+                </span>
+              </div>
             </CinematicReveal>
             <CinematicReveal variant="lines" delay={0.2}>
               <h2 className="font-serif text-4xl text-ink-dark font-normal">
@@ -234,9 +262,14 @@ export default function AboutPage() {
               <CinematicReveal key={project.id} variant="fade-up" delay={0.2 + idx * 0.1}>
                 <div className="p-8 bg-warm-bg border border-ink-dark/10 space-y-4 shadow-tactile h-full flex flex-col justify-between">
                   <div>
-                    <span className="font-sans text-xs uppercase tracking-wider text-kavibe-primary font-semibold">
-                      {project.category} · {project.year}
-                    </span>
+                    <div className="inline-flex items-center gap-2">
+                      <AnimatedIcon hoverScale={1.3} hoverRotate={10}>
+                        <Sparkles className="w-3.5 h-3.5 text-kavibe-primary" />
+                      </AnimatedIcon>
+                      <span className="font-sans text-xs uppercase tracking-wider text-kavibe-primary font-semibold">
+                        {project.category} · {project.year}
+                      </span>
+                    </div>
                     <h3 className="font-serif text-2xl text-ink-dark font-normal mt-2">
                       {project.title}
                     </h3>
@@ -261,9 +294,14 @@ export default function AboutPage() {
           
           <div className="max-w-2xl mb-16 space-y-2">
             <CinematicReveal variant="fade-up" delay={0.1}>
-              <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
-                Professional Timeline
-              </span>
+              <div className="inline-flex items-center gap-2">
+                <AnimatedIcon hoverScale={1.3} hoverRotate={15}>
+                  <Milestone className="w-4 h-4 text-kavibe-primary" />
+                </AnimatedIcon>
+                <span className="font-sans text-xs uppercase tracking-superwide text-kavibe-primary font-semibold block">
+                  Professional Timeline
+                </span>
+              </div>
             </CinematicReveal>
             <CinematicReveal variant="lines" delay={0.2}>
               <h2 className="font-serif text-4xl text-ink-dark font-normal">
@@ -272,24 +310,7 @@ export default function AboutPage() {
             </CinematicReveal>
           </div>
 
-          <div className="space-y-8 max-w-4xl">
-            {journey.map((item, idx) => (
-              <CinematicReveal key={item.organization} variant="fade-up" delay={0.2 + idx * 0.15}>
-                <div className="p-8 bg-warm-surface border border-ink-dark/10 space-y-3 shadow-tactile">
-                  <div className="flex justify-between items-baseline border-b border-ink-dark/10 pb-3">
-                    <div>
-                      <h3 className="font-serif text-2xl text-ink-dark font-normal">{item.role}</h3>
-                      <span className="font-sans text-xs uppercase tracking-wider text-kavibe-primary font-semibold">
-                        {item.organization}
-                      </span>
-                    </div>
-                    <span className="font-serif text-xl italic text-ink-muted">{item.period}</span>
-                  </div>
-                  <p className="font-sans text-sm text-ink-dark font-medium">{item.highlight}</p>
-                </div>
-              </CinematicReveal>
-            ))}
-          </div>
+          <InteractiveTimelineRail journey={journey} />
 
         </div>
       </section>
@@ -299,3 +320,4 @@ export default function AboutPage() {
     </main>
   );
 }
+

@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { downloadVCard } from '@/lib/vcard';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, User, Briefcase, Layers, Compass, Sparkles, Send } from 'lucide-react';
+import { AnimatedIcon } from './AnimatedIcon';
 
 export const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -22,12 +23,12 @@ export const Header: React.FC = () => {
   }, []);
 
   const navItems = [
-    { label: 'About', href: '/about' },
-    { label: 'Work', href: '#work' },
-    { label: 'KAVIBE®', href: '#kavibe' },
-    { label: 'Journey', href: '#journey' },
-    { label: 'Explore', href: '/explore' },
-    { label: 'Connect', href: '#connect' },
+    { label: 'About', href: '/about', icon: User },
+    { label: 'Work', href: '#work', icon: Briefcase },
+    { label: 'KAVIBE®', href: '#kavibe', icon: Layers },
+    { label: 'Journey', href: '#journey', icon: Compass },
+    { label: 'Explore', href: '/explore', icon: Sparkles },
+    { label: 'Connect', href: '#connect', icon: Send },
   ];
 
   return (
@@ -52,18 +53,24 @@ export const Header: React.FC = () => {
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="font-sans text-xs uppercase tracking-widest text-ink-secondary hover:text-kavibe-primary transition-colors duration-200 relative group py-1"
-            >
-              {item.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-kavibe-primary transition-all duration-300 group-hover:w-full" />
-            </Link>
-          ))}
+        {/* Desktop Navigation with Animated Icons */}
+        <nav className="hidden md:flex items-center gap-7" aria-label="Main Navigation">
+          {navItems.map((item) => {
+            const IconComponent = item.icon;
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="font-sans text-xs uppercase tracking-widest text-ink-secondary hover:text-kavibe-primary transition-colors duration-200 relative group py-1 flex items-center gap-1.5"
+              >
+                <AnimatedIcon hoverScale={1.25} hoverRotate={10}>
+                  <IconComponent className="w-3.5 h-3.5 text-kavibe-primary/80 group-hover:text-kavibe-primary transition-colors" />
+                </AnimatedIcon>
+                <span>{item.label}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-kavibe-primary transition-all duration-300 group-hover:w-full" />
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Desktop Action & Mobile Toggle */}
@@ -74,7 +81,9 @@ export const Header: React.FC = () => {
             title="Save contact card (.vcf)"
           >
             <span>Save Contact</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </AnimatedIcon>
           </button>
 
           <button
@@ -87,20 +96,26 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay with Animated Icons */}
       {mobileMenuOpen && (
         <div className="md:hidden fixed inset-0 top-[70px] bg-warm-bg/98 backdrop-blur-lg z-50 flex flex-col justify-between p-8 border-t border-ink-dark/10 animate-fadeIn">
           <nav className="flex flex-col gap-6 pt-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="font-serif text-3xl font-normal text-ink-dark hover:text-kavibe-primary transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="font-serif text-3xl font-normal text-ink-dark hover:text-kavibe-primary transition-colors flex items-center gap-3"
+                >
+                  <AnimatedIcon hoverScale={1.2}>
+                    <IconComponent className="w-6 h-6 text-kavibe-primary" />
+                  </AnimatedIcon>
+                  <span>{item.label}</span>
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex flex-col gap-4 pb-8 border-t border-ink-dark/10 pt-6">
@@ -112,7 +127,9 @@ export const Header: React.FC = () => {
               className="w-full py-4 bg-kavibe-primary text-warm-bg font-sans font-medium text-xs tracking-widest uppercase flex items-center justify-center gap-2"
             >
               <span>Save Contact Card (.vcf)</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <AnimatedIcon hoverScale={1.3}>
+                <ArrowUpRight className="w-4 h-4" />
+              </AnimatedIcon>
             </button>
             <p className="font-sans text-xs text-ink-muted text-center">
               Founder of KAVIBE® · Kampala, Uganda
