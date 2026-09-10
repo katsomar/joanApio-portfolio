@@ -11,7 +11,7 @@ import { CinematicReveal } from '@/components/CinematicReveal';
 import { ImageReveal } from '@/components/ImageReveal';
 import { AnimatedIcon } from '@/components/AnimatedIcon';
 import { InteractiveTimelineRail } from '@/components/InteractiveTimelineRail';
-import { ArrowLeft, CheckCircle2, Globe, Mail, Linkedin, Building2, Sparkles, User, Briefcase, Milestone } from 'lucide-react';
+import { CheckCircle2, Globe, Mail, Linkedin, Building2, Sparkles, User, Briefcase, Milestone } from 'lucide-react';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://joan-apio-portfolio.vercel.app';
 
@@ -47,16 +47,6 @@ export default function AboutPage() {
       <article className="pt-32 pb-20 bg-warm-surface border-b border-ink-dark/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-ink-muted hover:text-kavibe-primary font-sans text-xs uppercase tracking-superwide mb-8 transition-colors group"
-          >
-            <AnimatedIcon hoverScale={1.3} hoverRotate={-15}>
-              <ArrowLeft className="w-4 h-4 text-kavibe-primary" />
-            </AnimatedIcon>
-            <span>Return to NFC Quick Card</span>
-          </Link>
-
           <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12 items-center">
             
             {/* Portrait Column — FIRST ON MOBILE (order-1 lg:order-2) */}
@@ -80,17 +70,6 @@ export default function AboutPage() {
 
             {/* Text Column — SECOND ON MOBILE (order-2 lg:order-1) */}
             <div className="w-full lg:col-span-7 space-y-6 order-2 lg:order-1">
-              <CinematicReveal variant="fade-up" delay={0.1}>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-warm-bg border border-ink-dark/10 rounded-full">
-                  <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
-                    <Sparkles className="w-3.5 h-3.5 text-kavibe-primary" />
-                  </AnimatedIcon>
-                  <span className="font-sans text-xs font-semibold tracking-wider text-kavibe-primary uppercase">
-                    Official Authoritative Biography
-                  </span>
-                </div>
-              </CinematicReveal>
-
               <CinematicReveal variant="lines" delay={0.25}>
                 <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-normal text-ink-dark leading-[0.95]">
                   {name}
