@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { downloadVCard } from '@/lib/vcard';
-import { Menu, X, ArrowUpRight, User, Briefcase, Layers, Compass, Sparkles, Send } from 'lucide-react';
+import { Menu, X, ArrowUpRight, User, Briefcase, Layers, Home, Sparkles, Send } from 'lucide-react';
 import { AnimatedIcon } from './AnimatedIcon';
 
 export const Header: React.FC = () => {
@@ -23,10 +23,10 @@ export const Header: React.FC = () => {
   }, []);
 
   const navItems = [
+    { label: 'Home', href: '/#hero', icon: Home },
     { label: 'About', href: '/about', icon: User },
     { label: 'Work', href: '#work', icon: Briefcase },
     { label: 'KAVIBE®', href: '#kavibe', icon: Layers },
-    { label: 'Journey', href: '#journey', icon: Compass },
     { label: 'Explore', href: '/explore', icon: Sparkles },
     { label: 'Connect', href: '#connect', icon: Send },
   ];

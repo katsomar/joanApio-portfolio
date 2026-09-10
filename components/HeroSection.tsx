@@ -13,7 +13,7 @@ import { motion } from 'framer-motion';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="relative min-h-[92vh] pt-28 pb-16 md:pt-36 md:pb-24 flex items-center overflow-hidden bg-warm-bg">
+    <section id="hero" className="relative min-h-[92vh] pt-28 pb-16 md:pt-36 md:pb-24 flex items-center overflow-hidden bg-warm-bg">
       {/* Signature Circular Background Motif — Faint, Non-glowing, Bleeding off Left/Bottom */}
       <div className="circle-bg-primary w-[450px] sm:w-[650px] h-[450px] sm:h-[650px] -left-40 sm:-left-56 -bottom-40 sm:-bottom-56 z-0" />
       <div className="circle-bg-accent w-72 sm:w-96 h-72 sm:h-96 -right-24 top-16 z-0" />
