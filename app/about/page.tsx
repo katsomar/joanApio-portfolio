@@ -62,7 +62,7 @@ export default function AboutPage() {
               <ImageReveal delay={0.2} className="shadow-elevated">
                 <div className="aspect-[3/4] relative overflow-hidden bg-ink-dark/5 border border-ink-dark/10 group">
                   <Image
-                    src="/images/joan/9.jpg"
+                    src="/images/joan/6.jpg"
                     alt={`Joan Apio - ${primaryTitle}`}
                     fill
                     priority

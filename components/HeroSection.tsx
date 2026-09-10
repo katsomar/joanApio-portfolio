@@ -43,7 +43,7 @@ export const HeroSection: React.FC = () => {
               <ImageReveal delay={0.2} className="shadow-elevated relative z-10">
                 <div className="relative aspect-[3/4] overflow-hidden bg-ink-dark/5 group">
                   <Image
-                    src="/images/joan/hero.png"
+                    src="/images/joan/9.jpg"
                     alt="Joan Apio - Strategic Communicator & Creative Storyteller"
                     fill
                     priority
