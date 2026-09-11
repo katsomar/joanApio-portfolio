@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useSpring, useTransform, useMotionValueEvent } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useSpring, useTransform, useMotionValueEvent, useInView } from 'framer-motion';
 import { Crown, BookOpen, Award, MapPin, CheckCircle2, Building2 } from 'lucide-react';
 import { JourneyItem } from '@/lib/data/profile';
 import { AnimatedIcon } from './AnimatedIcon';
@@ -11,10 +11,10 @@ interface InteractiveTimelineRailProps {
 }
 
 const roleIcons = [
-  <Crown key="crown" className="w-5 h-5" />,
-  <BookOpen key="book" className="w-5 h-5" />,
-  <Award key="award" className="w-5 h-5" />,
-  <Building2 key="building" className="w-5 h-5" />,
+  <Crown key="crown" className="w-4 h-4 sm:w-5 sm:h-5" />,
+  <BookOpen key="book" className="w-4 h-4 sm:w-5 sm:h-5" />,
+  <Award key="award" className="w-4 h-4 sm:w-5 sm:h-5" />,
+  <Building2 key="building" className="w-4 h-4 sm:w-5 sm:h-5" />,
 ];
 
 export const InteractiveTimelineRail: React.FC<InteractiveTimelineRailProps> = ({ journey }) => {
@@ -37,17 +37,17 @@ export const InteractiveTimelineRail: React.FC<InteractiveTimelineRailProps> = (
   const railHeight = useTransform(smoothProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <div ref={containerRef} className="relative py-4">
+    <div ref={containerRef} className="relative py-2 sm:py-4">
       
       {/* Background Track Rail Line on Mobile (Left aligned) */}
-      <div className="absolute lg:hidden left-3 sm:left-4 top-8 bottom-8 w-0.5 bg-ink-dark/15 rounded-full overflow-hidden z-0">
+      <div className="absolute lg:hidden left-3 sm:left-4 top-6 bottom-6 w-0.5 bg-ink-dark/15 rounded-full overflow-hidden z-0">
         <motion.div
           style={{ height: railHeight }}
-          className="w-full bg-ink-dark rounded-full origin-top"
+          className="w-full bg-kavibe-primary rounded-full origin-top"
         />
       </div>
 
-      {/* Background Track Rail Line on Desktop (aligned under the node circles in col 5) */}
+      {/* Background Track Rail Line on Desktop */}
       <div className="absolute hidden lg:block right-[32.5%] top-10 bottom-10 w-1 bg-ink-dark/10 rounded-full overflow-hidden z-0">
         <motion.div
           style={{ height: railHeight }}
@@ -56,7 +56,7 @@ export const InteractiveTimelineRail: React.FC<InteractiveTimelineRailProps> = (
       </div>
 
       {/* Row-by-Row Aligned Experience Stack */}
-      <div className="space-y-10 sm:space-y-16 relative z-10 pl-6 sm:pl-8 lg:pl-0">
+      <div className="space-y-6 sm:space-y-12 relative z-10 pl-5 sm:pl-8 lg:pl-0">
         {journey.map((item, idx) => (
           <TimelineRow
             key={item.organization}
@@ -72,81 +72,112 @@ export const InteractiveTimelineRail: React.FC<InteractiveTimelineRailProps> = (
   );
 };
 
-/* Individual Aligned Timeline Row: Card on Left + Milestone Node on Right (Exact 1-to-1 Level) */
+/* Individual Aligned Timeline Row: Card on Left + Milestone Node on Right */
 const TimelineRow: React.FC<{
   item: JourneyItem;
   index: number;
   total: number;
   progress: any;
 }> = ({ item, index, total, progress }) => {
+  const rowRef = useRef<HTMLDivElement>(null);
   const [isActive, setIsActive] = useState(false);
   const threshold = total <= 1 ? 0.5 : index / (total - 1);
 
+  // Desktop rail progress handler
   useMotionValueEvent(progress, 'change', (latest: number) => {
-    setIsActive(latest >= threshold - 0.15);
+    if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
+      setIsActive(latest >= threshold - 0.15);
+    }
   });
+
+  // Viewport detection for mobile scroll card activation
+  const isInView = useInView(rowRef, { amount: 0.45, margin: "-5% 0px -15% 0px" });
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+      setIsActive(isInView);
+    }
+  }, [isInView]);
 
   const icon = roleIcons[index % roleIcons.length];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
       
-      {/* Left Column: Card (7 cols on desktop) */}
+      {/* Left Column: Card */}
       <div className="lg:col-span-7">
         <motion.div
+          ref={rowRef}
           animate={{
-            scale: isActive ? 1.01 : 1,
-            borderColor: isActive ? 'rgba(26, 26, 26, 0.85)' : 'rgba(26, 26, 26, 0.12)',
-            boxShadow: isActive ? '0 8px 24px -8px rgba(0, 0, 0, 0.12)' : '0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+            scale: isActive ? 1.015 : 1,
+            borderColor: isActive ? 'rgba(25, 22, 21, 0.85)' : 'rgba(25, 22, 21, 0.12)',
+            boxShadow: isActive ? '0 10px 30px -10px rgba(25, 22, 21, 0.15)' : '0 2px 4px -1px rgba(0, 0, 0, 0.03)',
           }}
           transition={{ duration: 0.35 }}
-          className={`p-6 sm:p-8 bg-warm-surface border rounded-sm transition-all duration-300 relative ${
+          className={`p-4 sm:p-7 bg-warm-surface border rounded-sm transition-all duration-300 relative ${
             isActive ? 'bg-warm-bg' : 'opacity-90'
           }`}
         >
           {/* Top Header */}
-          <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-ink-dark/10 pb-4 mb-4">
-            <div>
-              <span className="font-sans text-xs uppercase tracking-widest text-kavibe-primary font-semibold block mb-1">
+          <div className="flex items-center justify-between gap-2 border-b border-ink-dark/10 pb-3 md:pb-4 mb-2 md:mb-4">
+            <div className="flex-1 pr-2">
+              <span className="font-sans text-[10px] sm:text-xs uppercase tracking-widest text-kavibe-primary font-semibold block mb-0.5 sm:mb-1">
                 0{index + 1} · {item.organization}
               </span>
-              <h3 className="font-serif text-xl sm:text-2xl md:text-3xl text-ink-dark font-normal">
+              <h3 className="font-serif text-base sm:text-2xl md:text-3xl text-ink-dark font-normal leading-snug">
                 {item.role}
               </h3>
             </div>
-            <div className="text-right">
-              <span className="font-serif text-lg sm:text-xl italic text-kavibe-primary block">
-                {item.period}
-              </span>
-              <div className="flex items-center gap-1 text-xs font-sans text-ink-muted justify-end mt-1">
-                <MapPin className="w-3 h-3 text-kavibe-accent" />
-                <span>{item.location}</span>
+            
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <div className="text-right">
+                <span className="font-serif text-sm sm:text-xl italic text-kavibe-primary block">
+                  {item.period}
+                </span>
+                <div className="flex items-center gap-1 text-[10px] sm:text-xs font-sans text-ink-muted justify-end mt-0.5">
+                  <MapPin className="w-3 h-3 text-kavibe-accent flex-shrink-0" />
+                  <span className="whitespace-nowrap">{item.location}</span>
+                </div>
               </div>
+
+              {/* Animated Active Icon Badge on Mobile */}
+              <motion.div
+                animate={isActive ? { scale: [0.9, 1.2, 1], rotate: [0, 15, -5, 0] } : { scale: 0.9, opacity: 0.4 }}
+                transition={{ duration: 0.4 }}
+                className={`lg:hidden flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border transition-colors duration-300 ml-1 ${
+                  isActive
+                    ? 'bg-kavibe-primary text-warm-bg border-kavibe-primary shadow-md'
+                    : 'bg-warm-card text-ink-muted border-ink-dark/15'
+                }`}
+              >
+                {icon}
+              </motion.div>
             </div>
           </div>
 
-          {/* Highlight */}
-          <p className="font-sans text-xs sm:text-sm text-ink-dark font-medium leading-relaxed mb-3">
-            {item.highlight}
-          </p>
+          {/* Highlight & Bullet Details — Hidden on mobile (md:block) to eliminate scroll clutter */}
+          <div className="hidden md:block">
+            <p className="font-sans text-xs sm:text-sm text-ink-dark font-medium leading-relaxed mb-3">
+              {item.highlight}
+            </p>
 
-          {/* Details List */}
-          <ul className="space-y-2 pt-2 border-t border-ink-dark/10">
-            {item.details.map((detail) => (
-              <li key={detail} className="font-sans text-xs text-ink-secondary flex items-start gap-2.5">
-                <AnimatedIcon hoverScale={1.3} hoverRotate={10}>
-                  <CheckCircle2 className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 transition-colors duration-300 ${
-                    isActive ? 'text-kavibe-primary' : 'text-ink-muted'
-                  }`} />
-                </AnimatedIcon>
-                <span>{detail}</span>
-              </li>
-            ))}
-          </ul>
+            <ul className="space-y-2 pt-2 border-t border-ink-dark/10">
+              {item.details.map((detail) => (
+                <li key={detail} className="font-sans text-xs text-ink-secondary flex items-start gap-2.5">
+                  <AnimatedIcon hoverScale={1.3} hoverRotate={10}>
+                    <CheckCircle2 className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 transition-colors duration-300 ${
+                      isActive ? 'text-kavibe-primary' : 'text-ink-muted'
+                    }`} />
+                  </AnimatedIcon>
+                  <span>{detail}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </motion.div>
       </div>
 
-      {/* Right Column: Milestone Node Icon Aligned at EXACT Level of Card (5 cols on desktop) */}
+      {/* Right Column: Milestone Node Icon Aligned on Desktop */}
       <div className="lg:col-span-5 hidden lg:flex items-center gap-5 pl-4">
         
         {/* Milestone Node Circle */}
