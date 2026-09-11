@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
+import { Montserrat, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { PageTransition } from "@/components/PageTransition";
 
-const cormorant = Cormorant_Garamond({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   style: ["italic", "normal"],
-  variable: "--font-cormorant",
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -63,7 +63,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${jakarta.variable}`}>
+    <html lang="en" className={`${montserrat.variable} ${jakarta.variable}`}>
       <body className="font-sans bg-warm-bg text-ink-dark antialiased selection:bg-kavibe-primary selection:text-warm-bg">
         <PageTransition>{children}</PageTransition>
       </body>

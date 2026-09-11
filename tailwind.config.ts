@@ -29,8 +29,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ["var(--font-cormorant)", "Playfair Display", "Georgia", "serif"],
-        sans: ["var(--font-jakarta)", "Plus Jakarta Sans", "Inter", "sans-serif"],
+        serif: ["var(--font-montserrat)", "Montserrat", "sans-serif"],
+        sans: ["var(--font-montserrat)", "Montserrat", "var(--font-jakarta)", "Plus Jakarta Sans", "sans-serif"],
+        montserrat: ["var(--font-montserrat)", "Montserrat", "sans-serif"],
       },
       letterSpacing: {
         tightest: "-0.04em",
