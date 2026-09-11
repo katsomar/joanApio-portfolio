@@ -58,7 +58,7 @@ export const PositioningSection: React.FC = () => {
           </div>
 
           {/* Pillars List */}
-          <div className="lg:col-span-4 space-y-6 border-t lg:border-t-0 lg:border-l border-ink-dark/10 pt-8 lg:pt-0 lg:pl-12">
+          <div className="lg:col-span-4 space-y-4 md:space-y-6 border-t lg:border-t-0 lg:border-l border-ink-dark/10 pt-6 lg:pt-0 lg:pl-12">
             {philosophy.pillars.map((pillar, idx) => (
               <CinematicReveal key={pillar.title} variant="fade-up" delay={0.3 + idx * 0.15}>
                 <div className="space-y-1 group">
@@ -73,7 +73,7 @@ export const PositioningSection: React.FC = () => {
                       {pillar.title}
                     </h4>
                   </div>
-                  <p className="font-sans text-xs text-ink-secondary leading-relaxed pl-7">
+                  <p className="font-sans text-xs text-ink-secondary leading-relaxed pl-7 line-clamp-2 sm:line-clamp-none">
                     {pillar.description}
                   </p>
                 </div>

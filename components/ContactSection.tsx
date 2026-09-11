@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { downloadVCard } from '@/lib/vcard';
 import { Mail, Phone, Linkedin, Globe, MapPin, UserCheck, ArrowUpRight } from 'lucide-react';
 import { PROFILE_DATA } from '@/lib/data/profile';
@@ -11,7 +12,7 @@ export const ContactSection: React.FC = () => {
   const { contact, name, primaryTitle } = PROFILE_DATA;
 
   return (
-    <section id="connect" className="py-24 md:py-36 bg-warm-bg relative overflow-hidden">
+    <section id="connect" className="py-16 md:py-36 bg-warm-bg relative overflow-hidden">
       {/* Signature Background Circular Accents */}
       <div className="circle-bg-primary w-[600px] h-[600px] -left-48 -bottom-48 z-0" />
       <div className="circle-bg-accent w-[350px] h-[350px] -right-24 top-12 z-0" />
@@ -38,6 +39,26 @@ export const ContactSection: React.FC = () => {
               <p className="font-sans text-base text-ink-secondary leading-relaxed max-w-lg">
                 Whether you are looking to revitalize an institutional brand, capture field storytelling across Africa, or train your communications team, Joan is always open to strategic conversations.
               </p>
+            </CinematicReveal>
+
+            {/* Fancy Editorial Portrait Frame Under Title */}
+            <CinematicReveal variant="fade-up" delay={0.45}>
+              <div className="relative my-4 max-w-xs sm:max-w-sm group">
+                <div className="absolute -inset-2 bg-warm-surface border border-ink-dark/15 -rotate-2 rounded-sm pointer-events-none transition-transform duration-500 group-hover:rotate-0" />
+                <div className="relative aspect-[16/10] overflow-hidden rounded-sm border border-ink-dark/10 shadow-tactile bg-ink-dark/5">
+                  <Image
+                    src="/images/joan/3.jpg"
+                    alt="Joan Apio - Strategic Communicator"
+                    fill
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, 360px"
+                  />
+                  <div className="absolute bottom-2 left-2 right-2 p-2 bg-warm-bg/90 backdrop-blur-md border border-ink-dark/10 flex items-center justify-between text-xs">
+                    <span className="font-serif italic text-ink-dark font-medium">Joan Apio</span>
+                    <span className="font-sans text-[10px] uppercase tracking-wider text-kavibe-primary font-semibold">Kampala, Uganda</span>
+                  </div>
+                </div>
+              </div>
             </CinematicReveal>
 
             {/* Quick Action Button */}

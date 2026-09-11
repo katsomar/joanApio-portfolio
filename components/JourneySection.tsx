@@ -12,7 +12,7 @@ export const JourneySection: React.FC = () => {
   const { journey } = PROFILE_DATA;
 
   return (
-    <section id="journey" className="py-24 md:py-36 bg-warm-surface border-y border-ink-dark/10 relative overflow-hidden">
+    <section id="journey" className="py-16 md:py-36 bg-warm-surface border-y border-ink-dark/10 relative overflow-hidden">
       {/* Signature Background Circular Accents */}
       <div className="circle-bg-primary w-[480px] h-[480px] -right-36 -bottom-36 z-0" />
 

@@ -39,6 +39,14 @@ export const InteractiveTimelineRail: React.FC<InteractiveTimelineRailProps> = (
   return (
     <div ref={containerRef} className="relative py-4">
       
+      {/* Background Track Rail Line on Mobile (Left aligned) */}
+      <div className="absolute lg:hidden left-3 sm:left-4 top-8 bottom-8 w-0.5 bg-ink-dark/15 rounded-full overflow-hidden z-0">
+        <motion.div
+          style={{ height: railHeight }}
+          className="w-full bg-ink-dark rounded-full origin-top"
+        />
+      </div>
+
       {/* Background Track Rail Line on Desktop (aligned under the node circles in col 5) */}
       <div className="absolute hidden lg:block right-[32.5%] top-10 bottom-10 w-1 bg-ink-dark/10 rounded-full overflow-hidden z-0">
         <motion.div
@@ -48,7 +56,7 @@ export const InteractiveTimelineRail: React.FC<InteractiveTimelineRailProps> = (
       </div>
 
       {/* Row-by-Row Aligned Experience Stack */}
-      <div className="space-y-16 relative z-10">
+      <div className="space-y-10 sm:space-y-16 relative z-10 pl-6 sm:pl-8 lg:pl-0">
         {journey.map((item, idx) => (
           <TimelineRow
             key={item.organization}
@@ -87,13 +95,13 @@ const TimelineRow: React.FC<{
       <div className="lg:col-span-7">
         <motion.div
           animate={{
-            scale: isActive ? 1.015 : 1,
-            borderColor: isActive ? 'rgba(155, 44, 44, 0.4)' : 'rgba(26, 26, 26, 0.1)',
-            boxShadow: isActive ? '0 12px 30px -10px rgba(155, 44, 44, 0.12)' : '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+            scale: isActive ? 1.01 : 1,
+            borderColor: isActive ? 'rgba(26, 26, 26, 0.85)' : 'rgba(26, 26, 26, 0.12)',
+            boxShadow: isActive ? '0 8px 24px -8px rgba(0, 0, 0, 0.12)' : '0 2px 4px -1px rgba(0, 0, 0, 0.03)',
           }}
-          transition={{ duration: 0.4 }}
-          className={`p-8 bg-warm-surface border rounded-sm transition-all duration-500 relative ${
-            isActive ? 'ring-1 ring-kavibe-primary/20 bg-warm-bg/95' : 'opacity-90'
+          transition={{ duration: 0.35 }}
+          className={`p-6 sm:p-8 bg-warm-surface border rounded-sm transition-all duration-300 relative ${
+            isActive ? 'bg-warm-bg' : 'opacity-90'
           }`}
         >
           {/* Top Header */}
@@ -102,12 +110,12 @@ const TimelineRow: React.FC<{
               <span className="font-sans text-xs uppercase tracking-widest text-kavibe-primary font-semibold block mb-1">
                 0{index + 1} · {item.organization}
               </span>
-              <h3 className="font-serif text-2xl md:text-3xl text-ink-dark font-normal">
+              <h3 className="font-serif text-xl sm:text-2xl md:text-3xl text-ink-dark font-normal">
                 {item.role}
               </h3>
             </div>
             <div className="text-right">
-              <span className="font-serif text-xl italic text-kavibe-primary block">
+              <span className="font-serif text-lg sm:text-xl italic text-kavibe-primary block">
                 {item.period}
               </span>
               <div className="flex items-center gap-1 text-xs font-sans text-ink-muted justify-end mt-1">
@@ -118,7 +126,7 @@ const TimelineRow: React.FC<{
           </div>
 
           {/* Highlight */}
-          <p className="font-sans text-sm text-ink-dark font-medium leading-relaxed mb-4">
+          <p className="font-sans text-xs sm:text-sm text-ink-dark font-medium leading-relaxed mb-3">
             {item.highlight}
           </p>
 
@@ -127,7 +135,7 @@ const TimelineRow: React.FC<{
             {item.details.map((detail) => (
               <li key={detail} className="font-sans text-xs text-ink-secondary flex items-start gap-2.5">
                 <AnimatedIcon hoverScale={1.3} hoverRotate={10}>
-                  <CheckCircle2 className={`w-4 h-4 flex-shrink-0 mt-0.5 transition-colors duration-300 ${
+                  <CheckCircle2 className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 transition-colors duration-300 ${
                     isActive ? 'text-kavibe-primary' : 'text-ink-muted'
                   }`} />
                 </AnimatedIcon>

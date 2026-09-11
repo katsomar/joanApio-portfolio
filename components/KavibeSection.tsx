@@ -10,14 +10,14 @@ export const KavibeSection: React.FC = () => {
   const { kavibeOverview } = PROFILE_DATA;
 
   return (
-    <section id="kavibe" className="py-24 md:py-36 bg-ink-dark text-warm-bg relative overflow-hidden">
+    <section id="kavibe" className="py-16 md:py-36 bg-ink-dark text-warm-bg relative overflow-hidden">
       {/* Subtle brand graphic accent */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-kavibe-primary/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Brand Relationship Breadcrumb */}
-        <div className="flex items-center gap-3 mb-12">
+        <div className="flex items-center gap-3 mb-8 md:mb-12">
           <AnimatedIcon hoverScale={1.3} hoverRotate={15}>
             <Layers className="w-4 h-4 text-kavibe-accent" />
           </AnimatedIcon>
@@ -27,14 +27,14 @@ export const KavibeSection: React.FC = () => {
           <span className="w-8 h-[1px] bg-kavibe-primary" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           
           {/* Main KAVIBE Brand Card */}
-          <div className="lg:col-span-6 space-y-8">
+          <div className="lg:col-span-6 space-y-5 md:space-y-8">
             
             {/* Official KAVIBE Logo */}
-            <div className="inline-block p-4 bg-warm-bg/10 border border-warm-bg/15 backdrop-blur-md rounded-sm">
-              <div className="relative w-36 h-12">
+            <div className="inline-block p-3.5 md:p-4 bg-warm-bg/10 border border-warm-bg/15 backdrop-blur-md rounded-sm">
+              <div className="relative w-32 h-10 md:w-36 md:h-12">
                 <Image
                   src="/logo/kavibe.png"
                   alt="KAVIBE® Logo"
@@ -45,25 +45,25 @@ export const KavibeSection: React.FC = () => {
               </div>
             </div>
 
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-warm-bg font-normal flex items-center gap-2">
-              KAVIBE<span className="text-kavibe-accent text-3xl font-light">®</span>
+            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl text-warm-bg font-normal flex items-center gap-2">
+              KAVIBE<span className="text-kavibe-accent text-2xl md:text-3xl font-light">®</span>
             </h2>
 
-            <p className="font-serif text-xl md:text-2xl text-warm-bg/90 italic font-light">
+            <p className="font-serif text-lg md:text-2xl text-warm-bg/90 italic font-light">
               &ldquo;{kavibeOverview.tagline}&rdquo;
             </p>
 
-            <p className="font-sans text-base text-warm-bg/70 leading-relaxed">
+            <p className="font-sans text-sm md:text-base text-warm-bg/70 leading-relaxed line-clamp-3 md:line-clamp-none">
               {kavibeOverview.description}
             </p>
 
             {/* Link to Official KAVIBE Web */}
-            <div className="pt-4">
+            <div className="pt-2 md:pt-4">
               <a
                 href={kavibeOverview.websiteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-kavibe-primary hover:bg-kavibe-secondary text-warm-bg font-sans font-medium text-xs tracking-superwide uppercase transition-all duration-300 active:scale-95 shadow-elevated"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 md:px-8 py-3.5 md:py-4 bg-kavibe-primary hover:bg-kavibe-secondary text-warm-bg font-sans font-medium text-xs tracking-superwide uppercase transition-all duration-300 active:scale-95 shadow-elevated"
               >
                 <span>Visit Official KAVIBE® Website</span>
                 <AnimatedIcon hoverScale={1.3} hoverRotate={15}>
@@ -74,17 +74,17 @@ export const KavibeSection: React.FC = () => {
           </div>
 
           {/* Core Pillars & Role Card */}
-          <div className="lg:col-span-6 bg-warm-bg/5 border border-warm-bg/10 p-8 md:p-12 space-y-8 backdrop-blur-sm">
-            <div className="flex items-center justify-between border-b border-warm-bg/10 pb-6">
+          <div className="lg:col-span-6 bg-warm-bg/5 border border-warm-bg/10 p-6 md:p-12 space-y-6 md:space-y-8 backdrop-blur-sm">
+            <div className="flex items-center justify-between border-b border-warm-bg/10 pb-5 md:pb-6">
               <div>
                 <span className="font-sans text-xs uppercase tracking-widest text-kavibe-accent font-semibold block mb-1">
                   Joan Apio&apos;s Leadership
                 </span>
-                <h3 className="font-serif text-2xl text-warm-bg font-normal">
+                <h3 className="font-serif text-xl sm:text-2xl text-warm-bg font-normal">
                   Founder &amp; Managing Consultant
                 </h3>
               </div>
-              <div className="relative w-16 h-8 opacity-80">
+              <div className="relative w-14 h-7 md:w-16 md:h-8 opacity-80">
                 <Image
                   src="/logo/kavibe.png"
                   alt="KAVIBE Brand Mark"
@@ -100,14 +100,14 @@ export const KavibeSection: React.FC = () => {
                   <Sparkles className="w-3.5 h-3.5 text-kavibe-accent" />
                 </AnimatedIcon>
                 <span className="font-sans text-xs uppercase tracking-wider text-warm-bg/60 block">
-                  Platform Capabilities &amp; Specializations:
+                  Platform Capabilities:
                 </span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {kavibeOverview.corePillars.map((pillar) => (
-                  <div key={pillar} className="flex items-start gap-3">
+                  <div key={pillar} className="flex items-start gap-2.5">
                     <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
-                      <CheckCircle2 className="w-4 h-4 text-kavibe-primary flex-shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-kavibe-primary flex-shrink-0 mt-0.5" />
                     </AnimatedIcon>
                     <span className="font-sans text-xs text-warm-bg/80 leading-snug">
                       {pillar}

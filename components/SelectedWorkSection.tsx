@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, Briefcase, Palette, Video, GraduationCap, Library, Sparkles, FolderKanban } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Briefcase, Palette, Video, GraduationCap, Library, Sparkles, FolderKanban, ChevronDown } from 'lucide-react';
 import { PROFILE_DATA, FeaturedProject } from '@/lib/data/profile';
 import { CinematicReveal } from './CinematicReveal';
 import { ImageReveal } from './ImageReveal';
@@ -17,10 +17,11 @@ const categoryIconMap: Record<string, React.ReactNode> = {
 };
 
 export const SelectedWorkSection: React.FC = () => {
+  const [showAllMobile, setShowAllMobile] = useState(false);
   const homeProjects = PROFILE_DATA.projects.filter((p) => p.featuredOnHome);
 
   return (
-    <section id="work" className="py-24 md:py-36 bg-warm-bg relative overflow-hidden">
+    <section id="work" className="py-20 md:py-36 bg-warm-bg relative overflow-hidden">
       {/* Signature Background Circular Accents */}
       <div className="circle-bg-primary w-[550px] h-[550px] -left-48 top-1/3 z-0" />
       <div className="circle-bg-accent w-[450px] h-[450px] -right-36 bottom-1/4 z-0" />
@@ -28,7 +29,7 @@ export const SelectedWorkSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 pb-8 border-b border-ink-dark/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 pb-6 md:pb-8 border-b border-ink-dark/10">
           <div>
             <CinematicReveal variant="fade-up" delay={0.1}>
               <div className="inline-flex items-center gap-2 mb-3">
@@ -55,12 +56,30 @@ export const SelectedWorkSection: React.FC = () => {
           </CinematicReveal>
         </div>
 
-        {/* Editorial Rhythmic Projects Stack */}
-        <div className="space-y-28 md:space-y-36">
-          {homeProjects.map((project, idx) => (
-            <ProjectItem key={project.id} project={project} index={idx} />
-          ))}
+        {/* Editorial Rhythmic Projects Stack (Showing 1 project initially on mobile) */}
+        <div className="space-y-20 md:space-y-36">
+          {homeProjects.map((project, idx) => {
+            const isHiddenOnMobile = idx > 0 && !showAllMobile;
+            return (
+              <div key={project.id} className={isHiddenOnMobile ? 'hidden md:block' : 'block'}>
+                <ProjectItem project={project} index={idx} />
+              </div>
+            );
+          })}
         </div>
+
+        {/* Mobile View More Button */}
+        {!showAllMobile && homeProjects.length > 1 && (
+          <div className="md:hidden mt-12 text-center">
+            <button
+              onClick={() => setShowAllMobile(true)}
+              className="w-full py-3.5 bg-warm-surface border border-ink-dark/20 text-ink-dark font-sans font-medium text-xs tracking-wider uppercase flex items-center justify-center gap-2 active:scale-95 transition-all shadow-tactile"
+            >
+              <span>View More Projects ({homeProjects.length - 1} More)</span>
+              <ChevronDown className="w-4 h-4 text-kavibe-primary" />
+            </button>
+          </div>
+        )}
 
         {/* Pathway to Deeper Portfolio */}
         <CinematicReveal variant="fade-up" delay={0.2} className="mt-28 text-center pt-16 border-t border-ink-dark/10">
