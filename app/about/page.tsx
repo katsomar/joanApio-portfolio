@@ -52,14 +52,14 @@ export default function AboutPage() {
       <Header />
 
       {/* Hero Section */}
-      <article className="pt-32 pb-20 bg-warm-surface border-b border-ink-dark/10">
+      <article className="pt-24 pb-12 md:pt-32 md:pb-20 bg-warm-surface border-b border-ink-dark/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           
-          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12 items-center">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 md:gap-12 items-center">
             
             {/* Portrait Column — FIRST ON MOBILE (order-1 lg:order-2) */}
-            <div className="w-full lg:col-span-5 relative order-1 lg:order-2 mb-6 lg:mb-0">
-              <ImageReveal delay={0.2} className="shadow-elevated">
+            <div className="w-full lg:col-span-5 relative order-1 lg:order-2 mb-4 lg:mb-0">
+              <ImageReveal delay={0.2} className="shadow-elevated max-w-xs sm:max-w-none mx-auto">
                 <div className="aspect-[3/4] relative overflow-hidden bg-ink-dark/5 border border-ink-dark/10 group">
                   <Image
                     src="/images/joan/6.jpg"
@@ -68,42 +68,42 @@ export default function AboutPage() {
                     priority
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-ink-dark/80 to-transparent text-warm-bg">
-                    <p className="font-serif text-lg font-light">{name}</p>
-                    <p className="font-sans text-xs text-warm-bg/70 uppercase tracking-widest">{contact.location}</p>
+                  <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 bg-gradient-to-t from-ink-dark/80 to-transparent text-warm-bg">
+                    <p className="font-serif text-base sm:text-lg font-light">{name}</p>
+                    <p className="font-sans text-[10px] sm:text-xs text-warm-bg/70 uppercase tracking-widest">{contact.location}</p>
                   </div>
                 </div>
               </ImageReveal>
             </div>
 
             {/* Text Column — SECOND ON MOBILE (order-2 lg:order-1) */}
-            <div className="w-full lg:col-span-7 space-y-6 order-2 lg:order-1">
+            <div className="w-full lg:col-span-7 space-y-4 sm:space-y-6 order-2 lg:order-1">
               <CinematicReveal variant="lines" delay={0.25}>
-                <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-normal text-ink-dark leading-[0.95]">
+                <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-normal text-ink-dark leading-[0.95]">
                   {name}
                 </h1>
               </CinematicReveal>
 
               <CinematicReveal variant="words" delay={0.4}>
                 <div className="space-y-1">
-                  <p className="font-sans text-xl md:text-2xl font-medium text-ink-dark">
+                  <p className="font-sans text-lg sm:text-xl md:text-2xl font-medium text-ink-dark">
                     {primaryTitle}
                   </p>
-                  <p className="font-sans text-sm text-ink-secondary">
+                  <p className="font-sans text-xs sm:text-sm text-ink-secondary">
                     {secondaryTitle} · {PROFILE_DATA.badge}
                   </p>
                 </div>
               </CinematicReveal>
 
               <CinematicReveal variant="fade-up" delay={0.55}>
-                <p className="font-sans text-base text-ink-secondary leading-relaxed border-l-2 border-kavibe-primary/40 pl-4">
+                <p className="font-sans text-sm sm:text-base text-ink-secondary leading-relaxed border-l-2 border-kavibe-primary/40 pl-4">
                   {shortBio}
                 </p>
 
-                <div className="flex flex-wrap gap-4 pt-6">
+                <div className="flex flex-wrap gap-3 sm:gap-4 pt-4 sm:pt-6">
                   <a
                     href={`mailto:${contact.email}`}
-                    className="btn-editorial-primary inline-flex items-center gap-2"
+                    className="btn-editorial-primary inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 text-xs"
                   >
                     <AnimatedIcon hoverScale={1.2} hoverRotate={10}>
                       <Mail className="w-4 h-4" />
@@ -114,7 +114,7 @@ export default function AboutPage() {
                     href={contact.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-editorial-secondary inline-flex items-center gap-2"
+                    className="btn-editorial-secondary inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 text-xs"
                   >
                     <AnimatedIcon hoverScale={1.2} hoverRotate={-10}>
                       <Linkedin className="w-4 h-4 text-kavibe-primary" />
@@ -131,12 +131,12 @@ export default function AboutPage() {
       </article>
 
       {/* Main Biography & Philosophy */}
-      <section className="py-24 bg-warm-bg border-b border-ink-dark/10">
+      <section className="py-14 md:py-24 bg-warm-bg border-b border-ink-dark/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
             
-            <div className="lg:col-span-8 space-y-8">
+            <div className="lg:col-span-8 space-y-6 sm:space-y-8">
               <CinematicReveal variant="fade-up" delay={0.1}>
                 <div className="inline-flex items-center gap-2">
                   <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
@@ -149,20 +149,20 @@ export default function AboutPage() {
               </CinematicReveal>
 
               <CinematicReveal variant="lines" delay={0.2}>
-                <h2 className="font-serif text-3xl sm:text-4xl text-ink-dark font-normal">
+                <h2 className="font-serif text-2xl sm:text-4xl text-ink-dark font-normal">
                   Human-Centric Communication in the African Development Sector
                 </h2>
               </CinematicReveal>
 
-              <div className="space-y-6 font-sans text-base text-ink-secondary leading-relaxed clear-both">
-                <CinematicReveal variant="fade-up" delay={0.25} className="float-left mr-6 mb-3 sm:mb-4">
-                  <div className="w-44 sm:w-52 md:w-56 aspect-square relative shadow-tactile border border-ink-dark/10 group overflow-hidden bg-ink-dark/5">
+              <div className="space-y-4 sm:space-y-6 font-sans text-sm sm:text-base text-ink-secondary leading-relaxed clear-both">
+                <CinematicReveal variant="fade-up" delay={0.25} className="float-left mr-4 sm:mr-6 mb-3 sm:mb-4">
+                  <div className="w-36 sm:w-52 md:w-56 aspect-square relative shadow-tactile border border-ink-dark/10 group overflow-hidden bg-ink-dark/5">
                     <Image
                       src="/images/joan/7.jpg"
                       alt="Joan Apio working on communication strategy"
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 640px) 176px, 224px"
+                      sizes="(max-width: 640px) 144px, 224px"
                     />
                   </div>
                 </CinematicReveal>
@@ -175,28 +175,28 @@ export default function AboutPage() {
               </div>
 
               <CinematicReveal variant="words" delay={0.5}>
-                <blockquote className="p-8 bg-warm-surface border-l-4 border-kavibe-primary my-8 space-y-4 shadow-tactile">
-                  <p className="font-serif text-2xl text-ink-dark italic">
+                <blockquote className="p-5 sm:p-8 bg-warm-surface border-l-4 border-kavibe-primary my-6 sm:my-8 space-y-3 sm:space-y-4 shadow-tactile">
+                  <p className="font-serif text-lg sm:text-2xl text-ink-dark italic">
                     &ldquo;{philosophy.quote}&rdquo;
                   </p>
-                  <cite className="font-sans text-xs uppercase tracking-wider font-semibold text-kavibe-primary block not-italic">
+                  <cite className="font-sans text-[11px] sm:text-xs uppercase tracking-wider font-semibold text-kavibe-primary block not-italic">
                     — {philosophy.author}
                   </cite>
                 </blockquote>
               </CinematicReveal>
             </div>
 
-            <div className="lg:col-span-4 space-y-8">
+            <div className="lg:col-span-4 space-y-6 sm:space-y-8">
               <CinematicReveal variant="fade-up" delay={0.3}>
-                <div className="bg-warm-surface border border-ink-dark/10 p-8 space-y-6 shadow-tactile">
-                  <h3 className="font-serif text-2xl text-ink-dark font-normal border-b border-ink-dark/10 pb-4">
+                <div className="bg-warm-surface border border-ink-dark/10 p-5 sm:p-8 space-y-4 sm:space-y-6 shadow-tactile">
+                  <h3 className="font-serif text-xl sm:text-2xl text-ink-dark font-normal border-b border-ink-dark/10 pb-3 sm:pb-4">
                     Core Competencies
                   </h3>
-                  <ul className="space-y-3">
+                  <ul className="space-y-2.5 sm:space-y-3">
                     {competencies.map((comp) => (
-                      <li key={comp} className="flex items-center gap-3 font-sans text-sm text-ink-dark">
+                      <li key={comp} className="flex items-center gap-2.5 font-sans text-xs sm:text-sm text-ink-dark">
                         <AnimatedIcon hoverScale={1.3} hoverRotate={10}>
-                          <CheckCircle2 className="w-4 h-4 text-kavibe-primary flex-shrink-0" />
+                          <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-kavibe-primary flex-shrink-0" />
                         </AnimatedIcon>
                         <span>{comp}</span>
                       </li>
@@ -206,11 +206,11 @@ export default function AboutPage() {
               </CinematicReveal>
 
               <CinematicReveal variant="fade-up" delay={0.45}>
-                <div className="bg-ink-dark text-warm-bg p-8 space-y-4 shadow-elevated">
+                <div className="bg-ink-dark text-warm-bg p-5 sm:p-8 space-y-3 sm:space-y-4 shadow-elevated">
                   <AnimatedIcon hoverScale={1.2} hoverRotate={8}>
-                    <Building2 className="w-6 h-6 text-kavibe-accent" />
+                    <Building2 className="w-5 h-5 sm:w-6 sm:h-6 text-kavibe-accent" />
                   </AnimatedIcon>
-                  <h3 className="font-serif text-2xl font-normal">KAVIBE® Platform</h3>
+                  <h3 className="font-serif text-xl sm:text-2xl font-normal">KAVIBE® Platform</h3>
                   <p className="font-sans text-xs text-warm-bg/70 leading-relaxed">
                     {kavibeOverview.description}
                   </p>
@@ -218,7 +218,7 @@ export default function AboutPage() {
                     href={kavibeOverview.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-editorial-link text-warm-bg hover:text-kavibe-accent inline-flex items-center gap-2 pt-2"
+                    className="btn-editorial-link text-warm-bg hover:text-kavibe-accent inline-flex items-center gap-2 pt-2 text-xs"
                   >
                     <span>Visit KAVIBE.com</span>
                     <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
@@ -235,10 +235,10 @@ export default function AboutPage() {
       </section>
 
       {/* Selected Case Studies */}
-      <section className="py-24 bg-warm-surface border-b border-ink-dark/10">
+      <section className="py-14 md:py-24 bg-warm-surface border-b border-ink-dark/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           
-          <div className="max-w-2xl mb-16 space-y-2">
+          <div className="max-w-2xl mb-10 sm:mb-16 space-y-2">
             <CinematicReveal variant="fade-up" delay={0.1}>
               <div className="inline-flex items-center gap-2">
                 <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
@@ -250,7 +250,7 @@ export default function AboutPage() {
               </div>
             </CinematicReveal>
             <CinematicReveal variant="lines" delay={0.2}>
-              <h2 className="font-serif text-4xl text-ink-dark font-normal">
+              <h2 className="font-serif text-2xl sm:text-4xl text-ink-dark font-normal">
                 High-Impact Consultancies &amp; Projects
               </h2>
             </CinematicReveal>

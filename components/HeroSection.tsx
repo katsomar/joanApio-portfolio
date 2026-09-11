@@ -13,7 +13,7 @@ import { motion } from 'framer-motion';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section id="hero" className="relative min-h-[92vh] pt-28 pb-16 md:pt-36 md:pb-24 flex items-center overflow-hidden bg-warm-bg">
+    <section id="hero" className="relative min-h-[85vh] md:min-h-[92vh] pt-24 pb-12 md:pt-36 md:pb-24 flex items-center overflow-hidden bg-warm-bg">
       {/* Signature Circular Background Motif — Faint, Non-glowing, Bleeding off Left/Bottom */}
       <div className="circle-bg-primary w-[450px] sm:w-[650px] h-[450px] sm:h-[650px] -left-40 sm:-left-56 -bottom-40 sm:-bottom-56 z-0" />
       <div className="circle-bg-accent w-72 sm:w-96 h-72 sm:h-96 -right-24 top-16 z-0" />
@@ -27,11 +27,11 @@ export const HeroSection: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10">
-        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           
           {/* Integrated Portrait Column — FIRST ON MOBILE (order-1 lg:order-2) */}
-          <div className="w-full lg:col-span-5 relative order-1 lg:order-2 mb-6 lg:mb-0">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
+          <div className="w-full lg:col-span-5 relative order-1 lg:order-2 mb-4 lg:mb-0">
+            <div className="relative mx-auto max-w-xs sm:max-w-md lg:max-w-none">
               
               {/* Decorative Subtle Circle Behind Portrait */}
               <div className="circle-bg-primary w-72 sm:w-80 h-72 sm:h-80 -top-6 sm:-top-10 -right-6 sm:-right-10 z-0" />
@@ -52,18 +52,18 @@ export const HeroSection: React.FC = () => {
                   />
 
                   {/* Overlaid Editorial Watermark */}
-                  <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-ink-dark/80 via-ink-dark/30 to-transparent text-warm-bg flex items-end justify-between">
+                  <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 bg-gradient-to-t from-ink-dark/80 via-ink-dark/30 to-transparent text-warm-bg flex items-end justify-between">
                     <div>
-                      <span className="block font-serif text-lg font-light tracking-wide text-warm-bg">
+                      <span className="block font-serif text-base sm:text-lg font-light tracking-wide text-warm-bg">
                         Joan Apio
                       </span>
-                      <span className="font-sans text-[10px] uppercase tracking-widest text-warm-bg/70">
+                      <span className="font-sans text-[9px] sm:text-[10px] uppercase tracking-widest text-warm-bg/70">
                         Kampala, Uganda
                       </span>
                     </div>
                     <AnimatedIcon>
-                      <div className="p-2 bg-kavibe-primary text-warm-bg text-xs">
-                        <Sparkles className="w-4 h-4" />
+                      <div className="p-1.5 sm:p-2 bg-kavibe-primary text-warm-bg text-xs">
+                        <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       </div>
                     </AnimatedIcon>
                   </div>
@@ -100,9 +100,9 @@ export const HeroSection: React.FC = () => {
             
             {/* KAVIBE Tag & Logo Chip */}
             <CinematicReveal variant="fade-up" delay={0.1}>
-              <div className="inline-flex items-center gap-3 px-4 py-2 bg-warm-surface border border-ink-dark/10 rounded-full mb-6 shadow-tactile">
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 sm:px-4 sm:py-2 bg-warm-surface border border-ink-dark/10 rounded-full mb-4 sm:mb-6 shadow-tactile">
                 <AnimatedIcon hoverScale={1.15}>
-                  <div className="relative w-14 h-4">
+                  <div className="relative w-12 sm:w-14 h-3.5 sm:h-4">
                     <Image
                       src="/logo/kavibe.png"
                       alt="KAVIBE Logo"
@@ -112,7 +112,7 @@ export const HeroSection: React.FC = () => {
                   </div>
                 </AnimatedIcon>
                 <span className="text-ink-muted text-xs">•</span>
-                <span className="font-sans text-xs font-semibold tracking-wider text-kavibe-primary uppercase">
+                <span className="font-sans text-[11px] sm:text-xs font-semibold tracking-wider text-kavibe-primary uppercase">
                   {PROFILE_DATA.badge}
                 </span>
               </div>
@@ -120,24 +120,24 @@ export const HeroSection: React.FC = () => {
 
             {/* Main Name Heading with Cinematic Reveal */}
             <CinematicReveal variant="lines" delay={0.25}>
-              <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal tracking-tight text-ink-dark leading-[0.95] mb-6">
+              <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal tracking-tight text-ink-dark leading-[0.95] mb-4 sm:mb-6">
                 JOAN <span className="italic font-light text-kavibe-primary">APIO</span>
               </h1>
             </CinematicReveal>
 
             {/* Sub-titles */}
-            <CinematicReveal variant="words" delay={0.4} className="mb-8">
-              <p className="font-sans text-lg sm:text-xl md:text-2xl font-medium text-ink-dark tracking-tight">
+            <CinematicReveal variant="words" delay={0.4} className="mb-6 sm:mb-8">
+              <p className="font-sans text-base sm:text-xl md:text-2xl font-medium text-ink-dark tracking-tight">
                 Strategic Communicator <span className="text-kavibe-accent">&amp;</span> Creative Storyteller
               </p>
-              <p className="font-sans text-sm md:text-base text-ink-secondary tracking-wide mt-1">
+              <p className="font-sans text-xs sm:text-sm md:text-base text-ink-secondary tracking-wide mt-1">
                 Development Communications · Marketing · Branding
               </p>
             </CinematicReveal>
 
             {/* Short 5-Second NFC Statement */}
             <CinematicReveal variant="fade-up" delay={0.55} className="w-full">
-              <p className="font-sans text-base md:text-lg text-ink-secondary leading-relaxed max-w-xl mb-10 border-l-2 border-kavibe-primary/40 pl-5">
+              <p className="font-sans text-sm sm:text-base md:text-lg text-ink-secondary leading-relaxed max-w-xl mb-6 sm:mb-10 border-l-2 border-kavibe-primary/40 pl-4 sm:pl-5">
                 {PROFILE_DATA.tagline}
               </p>
             </CinematicReveal>
