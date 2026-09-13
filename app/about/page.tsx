@@ -11,6 +11,7 @@ import { CinematicReveal } from '@/components/CinematicReveal';
 import { ImageReveal } from '@/components/ImageReveal';
 import { AnimatedIcon } from '@/components/AnimatedIcon';
 import { InteractiveTimelineRail } from '@/components/InteractiveTimelineRail';
+import { MomentsAtWorkGallery } from '@/components/MomentsAtWorkGallery';
 import { CheckCircle2, Globe, Mail, Linkedin, Building2, Sparkles, User, Briefcase, Milestone, Palette, Video, Camera, GraduationCap, Library, ArrowUpRight } from 'lucide-react';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://joan-apio-portfolio.vercel.app';
@@ -364,6 +365,9 @@ export default function AboutPage() {
 
         </div>
       </section>
+
+      {/* Moments at Work Gallery */}
+      <MomentsAtWorkGallery />
 
       <FloatingSaveContact />
       <Footer />
