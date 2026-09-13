@@ -28,6 +28,7 @@ interface VCardModalProps {
 
 export const VCardModal: React.FC<VCardModalProps> = ({ isOpen, onClose }) => {
   const [copied, setCopied] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
   const { name, primaryTitle, contact, badge } = PROFILE_DATA;
 
@@ -45,8 +46,10 @@ Location: ${contact.location}`;
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleDownload = () => {
-    downloadVCard();
+  const handleDownload = async () => {
+    setLoading(true);
+    await downloadVCard();
+    setLoading(false);
     setDownloaded(true);
     setTimeout(() => setDownloaded(false), 3000);
   };
@@ -73,28 +76,28 @@ Location: ${contact.location}`;
             className="relative w-full max-w-lg bg-warm-surface border border-ink-dark/15 shadow-elevated rounded-xl overflow-hidden z-10 my-auto"
           >
             {/* Top Decorative Header Banner */}
-            <div className="bg-gradient-to-r from-kavibe-dark via-kavibe-primary to-kavibe-dark p-6 text-warm-bg relative overflow-hidden">
+            <div className="bg-[#681423] p-6 text-white relative overflow-hidden">
               <div className="circle-bg-primary w-64 h-64 -right-16 -top-16 opacity-30" />
               
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 p-2 text-warm-bg/70 hover:text-warm-bg hover:bg-white/10 rounded-full transition-colors"
+                className="absolute top-4 right-4 p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors"
                 aria-label="Close vCard Modal"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="flex items-center gap-2 mb-2 text-kavibe-accent">
-                <Sparkles className="w-4 h-4" />
+              <div className="flex items-center gap-2 mb-1.5 text-[#E5C887]">
+                <Sparkles className="w-4 h-4 text-[#C5A059]" />
                 <span className="font-sans text-xs font-semibold tracking-wider uppercase">
                   Digital Contact Card (.vcf)
                 </span>
               </div>
 
-              <h3 className="font-serif text-2xl sm:text-3xl text-warm-bg font-normal">
+              <h3 className="font-serif text-2xl sm:text-3xl text-white font-bold tracking-tight">
                 {name}
               </h3>
-              <p className="font-sans text-xs text-warm-bg/80 tracking-wide mt-1">
+              <p className="font-sans text-xs text-white/90 tracking-wide mt-1 font-medium">
                 {primaryTitle}
               </p>
             </div>
@@ -208,16 +211,27 @@ Location: ${contact.location}`;
               <div className="space-y-3">
                 <button
                   onClick={handleDownload}
+                  disabled={loading}
                   className={`w-full py-3.5 px-6 font-sans font-semibold text-xs tracking-wider uppercase rounded shadow-tactile transition-all duration-300 flex items-center justify-center gap-2 ${
                     downloaded
                       ? 'bg-emerald-800 text-warm-bg'
                       : 'bg-kavibe-primary hover:bg-kavibe-secondary text-warm-bg'
-                  }`}
+                  } ${loading ? 'opacity-70 cursor-wait' : ''}`}
                 >
                   <AnimatedIcon hoverScale={1.2} hoverRotate={-10}>
-                    {downloaded ? <Check className="w-4 h-4 text-warm-bg" /> : <Download className="w-4 h-4 text-warm-bg" />}
+                    {downloaded ? (
+                      <Check className="w-4 h-4 text-warm-bg" />
+                    ) : (
+                      <Download className="w-4 h-4 text-warm-bg" />
+                    )}
                   </AnimatedIcon>
-                  <span>{downloaded ? 'vCard Downloaded (.vcf)' : 'Download Contact to Phone (.vcf)'}</span>
+                  <span>
+                    {loading
+                      ? 'Saving Contact (.vcf)...'
+                      : downloaded
+                      ? 'Contact Saved (.vcf)'
+                      : 'Save Contact to Phone (.vcf)'}
+                  </span>
                 </button>
 
                 <div className="grid grid-cols-2 gap-3">
