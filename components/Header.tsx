@@ -49,12 +49,10 @@ export const Header: React.FC = () => {
   }, [mobileMenuOpen]);
 
   const navItems = [
-    { label: 'Home', href: '/#hero', icon: Home, subtitle: 'Main Portfolio & Introduction' },
+    { label: 'Home', href: '/', icon: Home, subtitle: 'Main Portfolio & Introduction' },
     { label: 'About', href: '/about', icon: User, subtitle: 'Biography & Career Journey' },
-    { label: 'Work', href: '#work', icon: Briefcase, subtitle: 'Featured Case Studies' },
-    { label: 'KAVIBE®', href: '#kavibe', icon: Layers, subtitle: 'Brand Strategy & Mentorship Platform' },
     { label: 'Explore', href: '/explore', icon: Sparkles, subtitle: 'Interactive Consultancy Archive' },
-    { label: 'Connect', href: '#connect', icon: Send, subtitle: 'Direct Advisory Contact' },
+    { label: 'Connect', href: '/#connect', icon: Send, subtitle: 'Direct Advisory Contact Form' },
   ];
 
   return (
