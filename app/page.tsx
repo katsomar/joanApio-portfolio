@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { SplashScreen } from '@/components/SplashScreen';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
 import { PositioningSection } from '@/components/PositioningSection';
@@ -15,6 +18,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-warm-bg text-ink-dark relative selection:bg-kavibe-primary selection:text-warm-bg">
+      <SplashScreen />
       {/* Schema.org Person JSON-LD for Google Search */}
       <script
         type="application/ld+json"
