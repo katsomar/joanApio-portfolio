@@ -31,6 +31,7 @@ export async function generateVCardStringWithPhoto(): Promise<string> {
     `EMAIL;TYPE=INTERNET,WORK:${contact.email}`,
     `TEL;TYPE=CELL,VOICE:${rawPhone}`,
     `URL;TYPE=WORK:${contact.website}`,
+    `URL;TYPE=Portfolio:${contact.portfolioWebsite}`,
     `URL;TYPE=LinkedIn:${contact.linkedin}`,
     `ADR;TYPE=WORK:;;${contact.location};;;`,
     `NOTE:${primaryTitle} | ${badge}`
@@ -59,6 +60,7 @@ export function generateVCardString(): string {
     `EMAIL;TYPE=INTERNET,WORK:${contact.email}`,
     `TEL;TYPE=CELL,VOICE:${rawPhone}`,
     `URL;TYPE=WORK:${contact.website}`,
+    `URL;TYPE=Portfolio:${contact.portfolioWebsite}`,
     `URL;TYPE=LinkedIn:${contact.linkedin}`,
     `ADR;TYPE=WORK:;;${contact.location};;;`,
     `NOTE:${primaryTitle} | ${badge}`,

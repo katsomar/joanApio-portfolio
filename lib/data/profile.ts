@@ -43,6 +43,7 @@ export interface ProfileData {
     phone: string;
     linkedin: string;
     website: string;
+    portfolioWebsite: string;
     location: string;
     organization: string;
   };
@@ -90,6 +91,7 @@ export const PROFILE_DATA: ProfileData = {
     phone: "+256 772 946826",
     linkedin: "https://www.linkedin.com/in/apiojoan/",
     website: "https://www.kavibe.com/",
+    portfolioWebsite: "https://joan-apio-portfolio.vercel.app/",
     location: "Kampala, Uganda",
     organization: "KAVIBE® / Strategic Communication"
   },

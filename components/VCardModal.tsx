@@ -37,6 +37,7 @@ export const VCardModal: React.FC<VCardModalProps> = ({ isOpen, onClose }) => {
 ${primaryTitle} | ${badge}
 Phone: ${contact.phone}
 Email: ${contact.email}
+Portfolio: ${contact.portfolioWebsite}
 Website: ${contact.website}
 LinkedIn: ${contact.linkedin}
 Location: ${contact.location}`;
@@ -136,6 +137,25 @@ Location: ${contact.location}`;
                 {/* Direct Action Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-sans">
                   
+                  {/* Portfolio Website */}
+                  <a
+                    href={contact.portfolioWebsite}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-2.5 bg-warm-surface border border-ink-dark/10 hover:border-kavibe-primary transition-colors rounded group sm:col-span-2"
+                  >
+                    <div className="p-1.5 bg-kavibe-primary/10 text-kavibe-primary rounded">
+                      <Globe className="w-3.5 h-3.5" />
+                    </div>
+                    <div className="truncate flex-1">
+                      <span className="text-[10px] text-ink-muted uppercase block leading-none">Portfolio Website</span>
+                      <span className="font-medium text-ink-dark group-hover:text-kavibe-primary transition-colors truncate block">
+                        joan-apio-portfolio.vercel.app
+                      </span>
+                    </div>
+                    <ExternalLink className="w-3.5 h-3.5 text-ink-muted group-hover:text-kavibe-primary flex-shrink-0" />
+                  </a>
+
                   {/* Phone */}
                   <a
                     href={`tel:${contact.phone.replace(/[^\d+]/g, '')}`}
@@ -168,7 +188,7 @@ Location: ${contact.location}`;
                     </div>
                   </a>
 
-                  {/* Website */}
+                  {/* KAVIBE Company Website */}
                   <a
                     href={contact.website}
                     target="_blank"
@@ -179,7 +199,7 @@ Location: ${contact.location}`;
                       <Globe className="w-3.5 h-3.5" />
                     </div>
                     <div className="truncate">
-                      <span className="text-[10px] text-ink-muted uppercase block leading-none">Website</span>
+                      <span className="text-[10px] text-ink-muted uppercase block leading-none">KAVIBE® Website</span>
                       <span className="font-medium text-ink-dark group-hover:text-kavibe-primary transition-colors">
                         www.kavibe.com
                       </span>

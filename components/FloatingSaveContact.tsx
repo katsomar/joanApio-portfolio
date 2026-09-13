@@ -57,17 +57,53 @@ export const FloatingSaveContact: React.FC = () => {
             </motion.svg>
           </div>
 
-          {/* Main Circular Floating Button */}
-          <button
+          {/* Expanding Throbbing Pulse Ring (Pulses every 5s) */}
+          <motion.div
+            animate={{
+              scale: [1, 1.45, 1.6],
+              opacity: [0.6, 0.25, 0],
+            }}
+            transition={{
+              duration: 1.2,
+              repeat: Infinity,
+              repeatDelay: 3.8,
+              ease: 'easeOut',
+            }}
+            className="absolute inset-0 rounded-full bg-kavibe-primary/40 pointer-events-none"
+          />
+
+          {/* Main Circular Floating Button with 5s Throbbing Effect */}
+          <motion.button
             onClick={() => setModalOpen(true)}
-            className="relative z-10 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center border border-kavibe-secondary bg-kavibe-primary hover:bg-kavibe-secondary text-warm-bg transition-all duration-300 active:scale-90 shadow-tactile"
+            animate={{
+              scale: [1, 1.15, 1, 1.12, 1],
+            }}
+            transition={{
+              duration: 1.2,
+              repeat: Infinity,
+              repeatDelay: 3.8,
+              ease: 'easeInOut',
+            }}
+            className="relative z-10 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center border border-kavibe-secondary bg-kavibe-primary hover:bg-kavibe-secondary text-warm-bg transition-colors duration-300 active:scale-90 shadow-elevated"
             aria-label="Open Joan E. Apio Contact Card (.vcf)"
             title="Open Contact Card (.vcf)"
           >
             <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
-              <UserPlus className="w-5 h-5 text-warm-bg" />
+              <motion.div
+                animate={{
+                  rotate: [0, -14, 14, -8, 8, 0],
+                }}
+                transition={{
+                  duration: 1.2,
+                  repeat: Infinity,
+                  repeatDelay: 3.8,
+                  ease: 'easeInOut',
+                }}
+              >
+                <UserPlus className="w-5 h-5 text-warm-bg" />
+              </motion.div>
             </AnimatedIcon>
-          </button>
+          </motion.button>
 
         </div>
       </aside>

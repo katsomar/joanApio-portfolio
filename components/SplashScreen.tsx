@@ -9,31 +9,37 @@ interface SplashScreenProps {
 }
 
 export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  // Synchronously initialize state so already-visited sessions skip rendering on Frame 1 with 0 flash
+  const [isVisible, setIsVisible] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        return sessionStorage.getItem('hasSeenSplash') !== 'true';
+      } catch {
+        return true;
+      }
+    }
+    return true;
+  });
 
   useEffect(() => {
-    // Show splash screen only ONCE per browser session
-    const hasSeen = sessionStorage.getItem('hasSeenSplash');
-    if (hasSeen === 'true') {
-      setIsVisible(false);
-      return;
-    }
-
-    // Mark as seen immediately so navigating back to Home skips splash screen
-    sessionStorage.setItem('hasSeenSplash', 'true');
-    setIsVisible(true);
+    if (!isVisible) return;
 
     const timer = setTimeout(() => {
       handleDismiss();
     }, 4800);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [isVisible]);
 
   const handleDismiss = () => {
+    try {
+      sessionStorage.setItem('hasSeenSplash', 'true');
+    } catch {}
     setIsVisible(false);
     if (onComplete) onComplete();
   };
+
+  if (!isVisible) return null;
 
   const nameWords = [
     { text: 'Joan', highlight: false },
