@@ -9,10 +9,20 @@ interface SplashScreenProps {
 }
 
 export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   useEffect(() => {
-    // Show splash screen for 4.8s so user can enjoy the visual craftsmanship
+    // Show splash screen only ONCE per browser session
+    const hasSeen = sessionStorage.getItem('hasSeenSplash');
+    if (hasSeen === 'true') {
+      setIsVisible(false);
+      return;
+    }
+
+    // Mark as seen immediately so navigating back to Home skips splash screen
+    sessionStorage.setItem('hasSeenSplash', 'true');
+    setIsVisible(true);
+
     const timer = setTimeout(() => {
       handleDismiss();
     }, 4800);
