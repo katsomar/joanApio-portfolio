@@ -22,21 +22,38 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://joan-apio-portfolio
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Joan E. Apio — Strategic Communicator & Founder of KAVIBE®",
-  description: "Official NFC digital identity & editorial profile for Joan E. Apio, a Ugandan Development Communications & Marketing Specialist, Creative Storyteller, and founder of KAVIBE®.",
+  title: "Joan Apio — Founder of KAVIBE® | Strategic Communicator & Storyteller",
+  description: "Official portfolio and executive profile for Joan Apio (Joan E. Apio), Founder of KAVIBE® and Development Communications & Strategic Marketing Specialist in Uganda.",
   keywords: [
-    "Joan E. Apio",
     "Joan Apio",
+    "Joan E. Apio",
+    "Joan Apio KAVIBE",
     "KAVIBE",
-    "Development Communication",
+    "KAVIBE Founder",
+    "KAVIBE Joan Apio",
+    "Joan Apio Portfolio",
+    "Development Communication Uganda",
     "Strategic Communicator",
     "Uganda Marketing Specialist",
-    "Creative Storytelling",
-    "RUFORUM",
-    "University of Juba Rebranding",
-    "African Higher Education Communication"
+    "Creative Storytelling Africa",
+    "RUFORUM Communication",
+    "University of Juba Rebranding"
   ],
   authors: [{ name: "Joan E. Apio" }],
+  alternates: {
+    canonical: siteUrl,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     title: "Joan E. Apio — Strategic Communicator & Founder of KAVIBE®",
     description: "Development Communications · Marketing · Branding · Storytelling",

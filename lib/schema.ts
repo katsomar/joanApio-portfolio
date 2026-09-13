@@ -10,14 +10,26 @@ export function getPersonSchema() {
     '@type': 'Person',
     '@id': `${SITE_URL}/#person`,
     name,
+    alternateName: ['Joan Apio', 'Joan E Apio', 'Apio Joan', 'Founder of KAVIBE', 'KAVIBE Joan Apio'],
     jobTitle: primaryTitle,
-    description: `${shortBio} ${secondaryTitle}.`,
+    description: `${shortBio} ${secondaryTitle}. Founder of KAVIBE®.`,
     url: SITE_URL,
     image: `${SITE_URL}/images/joan/hero.png`,
     sameAs: [
       contact.linkedin,
-      contact.website
+      contact.website,
+      contact.portfolioWebsite,
+      'https://www.kavibe.com/'
     ],
+    founder: {
+      '@type': 'Organization',
+      '@id': 'https://www.kavibe.com/#organization',
+      name: kavibeOverview.name,
+      url: kavibeOverview.websiteUrl,
+      description: kavibeOverview.description,
+      foundingDate: kavibeOverview.foundedYear,
+      logo: `${SITE_URL}/logo/kavibe.png`,
+    },
     worksFor: {
       '@type': 'Organization',
       '@id': 'https://www.kavibe.com/#organization',
