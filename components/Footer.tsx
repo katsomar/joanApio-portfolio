@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
             <div className="h-8 w-[1px] bg-warm-bg/20 hidden sm:block" />
             <div>
               <span className="font-serif text-xl text-warm-bg font-normal block">
-                JOAN APIO
+                JOAN E. APIO
               </span>
               <p className="font-sans text-[11px] text-warm-bg/60 tracking-wide">
                 {PROFILE_DATA.secondaryTitle}
@@ -75,7 +75,7 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-warm-bg/40">
-          <p>© {new Date().getFullYear()} Joan Apio. All rights reserved. Founder of KAVIBE®.</p>
+          <p>© {new Date().getFullYear()} Joan E. Apio. All rights reserved. Founder of KAVIBE®.</p>
           <p>Art-Directed &amp; Crafted for NFC &amp; Web Presentation</p>
         </div>
       </div>

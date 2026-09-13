@@ -60,14 +60,14 @@ export interface ProfileData {
 }
 
 export const PROFILE_DATA: ProfileData = {
-  name: "JOAN APIO",
+  name: "Joan E. Apio",
   primaryTitle: "Strategic Communicator & Creative Storyteller",
   secondaryTitle: "Development Communications · Marketing · Branding",
   tagline: "Bridging complex development initiatives and human impact through story-driven strategy.",
   badge: "Founder / KAVIBE®",
   shortBio: "Senior Development Communications & Marketing Specialist with over 15 years of experience shaping strategic narratives, leading institutional rebrandings, and mentoring the next generation of communicators across Africa.",
   extendedStory: [
-    "Joan Apio is an empowerment catalyst, strategic communicator, and the founder of KAVIBE®. Over the past decade and a half, she has operated at the intersection of international development, higher education, strategic marketing, and human storytelling.",
+    "Joan E. Apio is an empowerment catalyst, strategic communicator, and the founder of KAVIBE®. Over the past decade and a half, she has operated at the intersection of international development, higher education, strategic marketing, and human storytelling.",
     "Her approach rejects generic corporate communication. Instead, she crafts authentic narratives that translate complex agricultural research, institutional missions, and community programs into clear visual and written stories that drive measurable engagement.",
     "Through KAVIBE®, Joan partners with universities, development agencies, and non-profits across Africa—delivering everything from end-to-end institutional rebrandings and digital skilling workshops to documentary production and mentorship for mid-career professionals."
   ],
@@ -86,9 +86,9 @@ export const PROFILE_DATA: ProfileData = {
     foundedYear: "2017"
   },
   contact: {
-    email: "joan@kavibe.com",
-    phone: "+256 700 000 000",
-    linkedin: "https://www.linkedin.com/in/joan-apio/",
+    email: "j.apio@kavibe.com",
+    phone: "+256 772 946826",
+    linkedin: "https://www.linkedin.com/in/apiojoan/",
     website: "https://www.kavibe.com/",
     location: "Kampala, Uganda",
     organization: "KAVIBE® / Strategic Communication"

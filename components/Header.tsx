@@ -46,7 +46,7 @@ export const Header: React.FC = () => {
           className="group flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-kavibe-primary"
         >
           <span className="font-serif font-bold text-xl md:text-2xl tracking-tight text-ink-dark group-hover:text-kavibe-primary transition-colors duration-300">
-            JOAN APIO
+            JOAN E. APIO
           </span>
           <span className="font-sans text-[10px] uppercase tracking-superwide text-ink-muted">
             Strategic Communicator

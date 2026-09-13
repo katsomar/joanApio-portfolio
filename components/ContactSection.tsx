@@ -1,14 +1,16 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { downloadVCard } from '@/lib/vcard';
 import { Mail, Phone, Linkedin, Globe, MapPin, UserCheck, ArrowUpRight } from 'lucide-react';
 import { PROFILE_DATA } from '@/lib/data/profile';
 import { CinematicReveal } from './CinematicReveal';
 import { AnimatedIcon } from './AnimatedIcon';
+import { VCardModal } from './VCardModal';
 
 export const ContactSection: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { contact, name, primaryTitle } = PROFILE_DATA;
 
   return (
@@ -48,13 +50,13 @@ export const ContactSection: React.FC = () => {
                 <div className="relative aspect-[16/10] overflow-hidden rounded-sm border border-ink-dark/10 shadow-tactile bg-ink-dark/5">
                   <Image
                     src="/images/joan/3.jpg"
-                    alt="Joan Apio - Strategic Communicator"
+                    alt="Joan E. Apio - Strategic Communicator"
                     fill
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, 360px"
                   />
                   <div className="absolute bottom-2 left-2 right-2 p-2 bg-warm-bg/90 backdrop-blur-md border border-ink-dark/10 flex items-center justify-between text-xs">
-                    <span className="font-serif italic text-ink-dark font-medium">Joan Apio</span>
+                    <span className="font-serif italic text-ink-dark font-medium">Joan E. Apio</span>
                     <span className="font-sans text-[10px] uppercase tracking-wider text-kavibe-primary font-semibold">Kampala, Uganda</span>
                   </div>
                 </div>
@@ -63,15 +65,15 @@ export const ContactSection: React.FC = () => {
 
             {/* Quick Action Button */}
             <CinematicReveal variant="fade-up" delay={0.55}>
-              <div className="pt-4">
+              <div className="pt-4 flex flex-wrap items-center gap-3">
                 <button
-                  onClick={downloadVCard}
+                  onClick={() => setIsModalOpen(true)}
                   className="btn-editorial-primary inline-flex items-center gap-3"
                 >
                   <AnimatedIcon hoverScale={1.25} hoverRotate={12}>
                     <UserCheck className="w-4 h-4" />
                   </AnimatedIcon>
-                  <span>Save Contact to Phone (.vcf)</span>
+                  <span>Save Digital Contact (.vcf)</span>
                 </button>
               </div>
             </CinematicReveal>
@@ -157,7 +159,7 @@ export const ContactSection: React.FC = () => {
                       <div>
                         <span className="font-sans text-[11px] uppercase tracking-wider text-ink-muted block">LinkedIn Profile</span>
                         <span className="font-sans text-sm font-medium text-ink-dark group-hover:text-kavibe-primary transition-colors">
-                          in/joan-apio
+                          in/apiojoan
                         </span>
                       </div>
                     </div>
@@ -209,6 +211,8 @@ export const ContactSection: React.FC = () => {
         </div>
 
       </div>
+
+      <VCardModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

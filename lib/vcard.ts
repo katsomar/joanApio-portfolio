@@ -2,20 +2,18 @@ import { PROFILE_DATA } from './data/profile';
 
 export function generateVCardString(): string {
   const { name, primaryTitle, contact, badge } = PROFILE_DATA;
-  const nameParts = name.split(' ');
-  const lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : name;
-  const firstName = nameParts.length > 1 ? nameParts.slice(0, -1).join(' ') : '';
+  const rawPhone = contact.phone.replace(/[^\d+]/g, '');
 
   return [
     'BEGIN:VCARD',
     'VERSION:3.0',
-    `N:${lastName};${firstName};;;`,
+    'N:Apio;Joan;E.;;',
     `FN:${name}`,
     `ORG:${contact.organization}`,
     `TITLE:${primaryTitle}`,
     `EMAIL;TYPE=INTERNET,WORK:${contact.email}`,
-    `TEL;TYPE=CELL,VOICE:${contact.phone}`,
-    `URL;TYPE=KAVIBE:${contact.website}`,
+    `TEL;TYPE=CELL,VOICE:${rawPhone}`,
+    `URL;TYPE=WORK:${contact.website}`,
     `URL;TYPE=LinkedIn:${contact.linkedin}`,
     `ADR;TYPE=WORK:;;${contact.location};;;`,
     `NOTE:${primaryTitle} | ${badge}`,
@@ -30,7 +28,7 @@ export function downloadVCard(): void {
   
   const link = document.createElement('a');
   link.href = url;
-  link.setAttribute('download', 'Joan_Apio_Contact.vcf');
+  link.setAttribute('download', 'Joan_E_Apio_Contact.vcf');
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

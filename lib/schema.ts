@@ -47,8 +47,8 @@ export function getProfilePageSchema(url: string = `${SITE_URL}/about`) {
     '@type': 'ProfilePage',
     '@id': `${url}#profilepage`,
     url,
-    name: `Joan Apio — Official Professional Profile & Biography`,
-    description: `Official indexable profile page for Joan Apio, Ugandan Development Communications & Marketing Specialist and founder of KAVIBE®.`,
+    name: `Joan E. Apio — Official Professional Profile & Biography`,
+    description: `Official indexable profile page for Joan E. Apio, Ugandan Development Communications & Marketing Specialist and founder of KAVIBE®.`,
     mainEntity: getPersonSchema()
   };
 }
