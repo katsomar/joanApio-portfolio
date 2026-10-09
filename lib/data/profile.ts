@@ -351,7 +351,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "Regional Africa",
       summary: "Structured mentorship programs, personal branding masterclasses, and rapporteur support for development officers, NGO leaders, and communications professionals across Africa.",
       role: "Lead Mentor & Lead Copywriter",
-      image: "/images/joan/about.jpg",
+      image: "/images/joan/About.jpg",
       impact: [
         "Mentored 300+ communication officers across Africa",
         "Guided professionals on personal branding & executive communications",
