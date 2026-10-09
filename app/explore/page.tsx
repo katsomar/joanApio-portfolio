@@ -28,10 +28,17 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://joan-apio-portfolio
 
 const filterCategories = [
   { id: 'all', label: 'All Projects' },
-  { id: 'branding', label: 'Branding & Strategy' },
-  { id: 'documentary', label: 'Visual Documentaries' },
-  { id: 'skilling', label: 'Capacity Building' },
-  { id: 'knowledge', label: 'Knowledge Repositories' },
+  { id: 'Mentorship', label: 'Mentorship' },
+  { id: 'Training', label: 'Training' },
+  { id: 'Facilitation', label: 'Facilitation' },
+  { id: 'Rapporteur', label: 'Rapporteur' },
+  { id: 'Strategic Communication', label: 'Strategic Communication' },
+  { id: 'Visual Documentation', label: 'Visual Documentation' },
+  { id: 'Impact Stories', label: 'Impact Stories' },
+  { id: 'Digital', label: 'Digital' },
+  { id: 'Copywriting', label: 'Copywriting' },
+  { id: 'Branding & Visual Identity', label: 'Branding & Visual Identity' },
+  { id: 'Personal Branding', label: 'Personal Branding' },
 ];
 
 export default function ExplorePage() {
@@ -41,11 +48,10 @@ export default function ExplorePage() {
 
   const filteredProjects = projects.filter((project) => {
     if (activeFilter === 'all') return true;
-    if (activeFilter === 'branding') return project.category.toLowerCase().includes('branding');
-    if (activeFilter === 'documentary') return project.category.toLowerCase().includes('documentar');
-    if (activeFilter === 'skilling') return project.category.toLowerCase().includes('capacity') || project.category.toLowerCase().includes('skilling');
-    if (activeFilter === 'knowledge') return project.category.toLowerCase().includes('knowledge') || project.category.toLowerCase().includes('librar');
-    return true;
+    if (project.categories && Array.isArray(project.categories)) {
+      return project.categories.some((c) => c.toLowerCase() === activeFilter.toLowerCase());
+    }
+    return project.category.toLowerCase().includes(activeFilter.toLowerCase());
   });
 
   return (
