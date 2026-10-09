@@ -69,17 +69,6 @@ export default function ExplorePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-7 space-y-6">
-              <CinematicReveal variant="fade-up" delay={0.1}>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-warm-bg border border-ink-dark/10 rounded-full">
-                  <AnimatedIcon hoverScale={1.3} hoverRotate={12}>
-                    <Briefcase className="w-3.5 h-3.5 text-kavibe-primary" />
-                  </AnimatedIcon>
-                  <span className="font-sans text-xs font-semibold tracking-wider text-kavibe-primary uppercase">
-                    Interactive Portfolio &amp; Case Studies
-                  </span>
-                </div>
-              </CinematicReveal>
-
               <CinematicReveal variant="lines" delay={0.25}>
                 <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl text-ink-dark font-normal leading-[0.95]">
                   Explore the Work of <span className="italic font-light text-kavibe-primary">{name}</span>
@@ -112,9 +101,9 @@ export default function ExplorePage() {
 
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
               <CinematicReveal variant="fade-up" delay={0.3}>
-                <div className="relative w-64 h-80 sm:w-72 sm:h-96 group">
-                  <div className="absolute -inset-2 rounded-[58%_42%_65%_35%/48%_55%_45%_52%] bg-kavibe-primary/10 blur-sm pointer-events-none group-hover:scale-105 transition-transform duration-700" />
-                  <ImageReveal className="w-full h-full rounded-[58%_42%_65%_35%/48%_55%_45%_52%] border-2 border-kavibe-primary/30 overflow-hidden shadow-elevated relative bg-ink-dark/5">
+                <div className="relative w-72 h-72 sm:w-80 sm:h-80 group">
+                  <div className="absolute -inset-2 rounded-full bg-kavibe-primary/10 blur-sm pointer-events-none group-hover:scale-105 transition-transform duration-700" />
+                  <ImageReveal className="w-full h-full rounded-full border-2 border-kavibe-primary/30 overflow-hidden shadow-elevated relative bg-ink-dark/5">
                     <Image
                       src="/images/joan/3.jpg"
                       alt={`Joan Apio - Portfolio`}
