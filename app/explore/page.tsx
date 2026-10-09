@@ -105,7 +105,7 @@ export default function ExplorePage() {
                   <div className="absolute -inset-2 rounded-full bg-kavibe-primary/10 blur-sm pointer-events-none group-hover:scale-105 transition-transform duration-700" />
                   <ImageReveal className="w-full h-full rounded-full border-2 border-kavibe-primary/30 overflow-hidden shadow-elevated relative bg-ink-dark/5">
                     <Image
-                      src="/images/joan/3.jpg"
+                      src="/images/joan/1.jpg"
                       alt={`Joan Apio - Portfolio`}
                       fill
                       priority
@@ -313,7 +313,7 @@ export default function ExplorePage() {
                     Direct Contact &amp; Consultancies
                   </h3>
                   <p className="font-sans text-sm text-warm-bg/70">
-                    Reach Joan directly for institutional consultancies, speaking engagements, or strategic partnerships.
+                    Reach Joan directly for institutional consultancies, capacity-building engagements, or strategic communications partnerships.
                   </p>
                   <div className="space-y-3 text-sm font-sans text-warm-bg/80 pt-4 border-t border-warm-bg/10">
                     <p><strong className="text-warm-bg">Email:</strong> {contact.email}</p>

@@ -162,7 +162,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "East Africa",
       summary: "Strategic communications training and workshop facilitation focusing on food security, emergency relief campaigns, and community advocacy.",
       role: "Lead Trainer & Workshop Facilitator",
-      image: "/images/joan/5.jpg",
+      image: "/images/joan/15.jpg",
       impact: [
         "Developed grassroots communication toolkits for field coordinators",
         "Facilitated regional stakeholder strategy workshops"
@@ -180,7 +180,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "Kampala, Uganda",
       summary: "Capacity building and strategic communication workshops empowering university researchers, scholars, and communication leads across 120+ member universities.",
       role: "Lead Trainer & Workshop Facilitator",
-      image: "/images/projects/project_ruforum.png",
+      image: "/images/joan/17.jpg",
       impact: [
         "Built open repository & knowledge communication frameworks indexed globally",
         "Facilitated higher education communications bootcamps across Africa"
@@ -200,7 +200,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "East Africa",
       summary: "Visual documentation and impact storytelling highlighting community peacebuilding, conflict prevention, and governance initiatives in East Africa.",
       role: "Strategic Communications & Creative Director",
-      image: "/images/joan/9.jpg",
+      image: "/images/joan/10.jpg",
       impact: [
         "Produced visual case studies and field documentary series",
         "Crafted strategic communication collateral for international partners"
@@ -246,15 +246,15 @@ export const PROFILE_DATA: ProfileData = {
     },
     {
       id: "mastercard-tagdev",
-      title: "MASTERCARD / TAGDev Impact Storytelling Series",
+      title: "MASTERCARD Impact Storytelling Series",
       category: "Visual Documentation · Impact Stories · Strategic Communication",
       categories: ["Visual Documentation", "Impact Stories", "Strategic Communication"],
-      organization: "MASTERCARD Foundation / TAGDev / RUFORUM",
+      organization: "MASTERCARD",
       year: "2018 — 2023",
       location: "East & West Africa",
       summary: "Multi-country visual documentation and impact storytelling capturing how agricultural higher education transforms rural youth entrepreneurship and community livelihoods.",
       role: "Strategic Communications & Creative Director",
-      image: "/images/projects/project_tagdev.png",
+      image: "/images/joan/11.jpg",
       impact: [
         "Produced 25+ multimedia impact feature stories",
         "Engaged regional donor stakeholders & policymakers",
@@ -312,7 +312,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "Kampala, Uganda",
       summary: "Tailored brand design, bespoke executive portraiture, and high-impact website copywriting for a premier legal and development advisory firm.",
       role: "Creative Director & Lead Copywriter",
-      image: "/images/projects/project_sena.png",
+      image: "/images/joan/16.jpg",
       impact: [
         "Executive brand identity & collateral suite",
         "On-location photography & profile direction",
@@ -351,7 +351,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "Regional Africa",
       summary: "Structured mentorship programs, personal branding masterclasses, and rapporteur support for development officers, NGO leaders, and communications professionals across Africa.",
       role: "Lead Mentor & Lead Copywriter",
-      image: "/images/projects/project_digital_skilling.png",
+      image: "/images/joan/about.jpg",
       impact: [
         "Mentored 300+ communication officers across Africa",
         "Guided professionals on personal branding & executive communications",
