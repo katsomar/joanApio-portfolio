@@ -162,7 +162,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "East Africa",
       summary: "Strategic communications training and workshop facilitation focusing on food security, emergency relief campaigns, and community advocacy.",
       role: "Lead Trainer & Workshop Facilitator",
-      image: "/images/joan/huner.jpg",
+      image: "/images/joan/huner.jpeg",
       impact: [
         "Developed grassroots communication toolkits for field coordinators",
         "Facilitated regional stakeholder strategy workshops"
