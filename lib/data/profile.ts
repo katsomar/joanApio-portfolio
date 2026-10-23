@@ -200,7 +200,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "East Africa",
       summary: "Visual documentation and impact storytelling highlighting community peacebuilding, conflict prevention, and governance initiatives in East Africa.",
       role: "Strategic Communications & Creative Director",
-      image: "/images/joan/10.jpg",
+      image: "/images/joan/2.jpg",
       impact: [
         "Produced visual case studies and field documentary series",
         "Crafted strategic communication collateral for international partners"
