@@ -126,7 +126,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "Kampala, Uganda",
       summary: "Strategic communication capacity building, media training, and workshop facilitation for national HIV/AIDS advocacy and public health campaigns.",
       role: "Lead Trainer & Workshop Facilitator",
-      image: "/images/joan/10.jpg",
+      image: "/images/joan/11.jpg",
       impact: [
         "Facilitated capacity-building workshops for multi-sectoral communication leads",
         "Strengthened national media advocacy & public health narrative alignment"
@@ -162,7 +162,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "East Africa",
       summary: "Strategic communications training and workshop facilitation focusing on food security, emergency relief campaigns, and community advocacy.",
       role: "Lead Trainer & Workshop Facilitator",
-      image: "/images/joan/15.jpg",
+      image: "/images/joan/huner.jpg",
       impact: [
         "Developed grassroots communication toolkits for field coordinators",
         "Facilitated regional stakeholder strategy workshops"
@@ -218,7 +218,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "East Africa",
       summary: "Visual documentation and impact story campaigns showcasing climate-smart agribusiness innovations and smallholder farmer resilience.",
       role: "Strategic Communications & Creative Director",
-      image: "/images/joan/7.jpg",
+      image: "/images/joan/10.jpg",
       impact: [
         "Captured multimedia field stories across climate-smart farming hubs",
         "Directed publication of regional impact stories and video showcases"
@@ -236,7 +236,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "East & Central Africa",
       summary: "Strategic communication and visual storytelling documenting agricultural innovation platforms and technology transfer in East and Central Africa.",
       role: "Strategic Communications & Creative Director",
-      image: "/images/joan/8.jpg",
+      image: "/images/joan/15.jpg",
       impact: [
         "Documented multi-stakeholder research and agribusiness partnerships",
         "Produced high-impact visual narratives for regional policy dialogues"
