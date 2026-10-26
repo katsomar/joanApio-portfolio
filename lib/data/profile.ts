@@ -144,7 +144,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "Kampala, Uganda",
       summary: "Designing and delivering interactive training modules on development communications and strategic dissemination for education researchers.",
       role: "Lead Trainer & Workshop Facilitator",
-      image: "/images/joan/4.jpg",
+      image: "/images/joan/16.jpg",
       impact: [
         "Trained research officers on policy brief communication and stakeholder engagement",
         "Facilitated regional knowledge-sharing roundtables"
@@ -254,7 +254,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "East & West Africa",
       summary: "Multi-country visual documentation and impact storytelling capturing how agricultural higher education transforms rural youth entrepreneurship and community livelihoods.",
       role: "Strategic Communications & Creative Director",
-      image: "/images/joan/11.jpg",
+      image: "/images/joan/tag.jpg",
       impact: [
         "Produced 25+ multimedia impact feature stories",
         "Engaged regional donor stakeholders & policymakers",
