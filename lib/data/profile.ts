@@ -275,7 +275,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "Kampala, Uganda",
       summary: "Brand identity creation, digital platform strategy, and executive copywriting for advisory and management consultancies.",
       role: "Creative Director & Lead Copywriter",
-      image: "/images/joan/1.jpg",
+      image: "/images/joan/akec.jpg",
       impact: [
         "Crafted brand positioning, visual identity suite, and digital messaging",
         "Developed corporate profile and executive copywriting assets"
