@@ -312,7 +312,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "Kampala, Uganda",
       summary: "Tailored brand design, bespoke executive portraiture, and high-impact website copywriting for a premier legal and development advisory firm.",
       role: "Creative Director & Lead Copywriter",
-      image: "/images/joan/16.jpg",
+      image: "/images/joan/sena.jpg",
       impact: [
         "Executive brand identity & collateral suite",
         "On-location photography & profile direction",
