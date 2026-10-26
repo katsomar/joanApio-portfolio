@@ -333,7 +333,7 @@ export const PROFILE_DATA: ProfileData = {
       location: "Addis Ababa, Ethiopia",
       summary: "Rapporteur services for high-level summits, personal branding advisories for emerging leaders, and communications mentorship at continental policy forums.",
       role: "Lead Mentor & Lead Copywriter",
-      image: "/images/joan/image.jpeg",
+      image: "/images/joan/image.jpg",
       impact: [
         "Delivered comprehensive summit rapporteur reports & executive summaries",
         "Provided strategic mentorship and executive personal branding for development leaders"
